@@ -1,0 +1,75 @@
+object PropEditForm: TPropEditForm
+  Left = 489
+  Top = 145
+  HorzScrollBar.Visible = False
+  VertScrollBar.Visible = False
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSizeToolWin
+  Caption = 'Property Editor'
+  ClientHeight = 331
+  ClientWidth = 200
+  Color = clWindow
+  Constraints.MinHeight = 300
+  Constraints.MinWidth = 200
+  Ctl3D = False
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = True
+  Position = poDesigned
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnDeactivate = FormDeactivate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 15
+  object Splitter1: TSplitter
+    Left = 0
+    Top = 287
+    Width = 200
+    Height = 4
+    Cursor = crVSplit
+    Align = alBottom
+    Color = clBtnFace
+    ParentColor = False
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 291
+    Width = 200
+    Height = 40
+    Align = alBottom
+    BevelOuter = bvNone
+    BorderWidth = 1
+    BorderStyle = bsSingle
+    Ctl3D = False
+    Padding.Left = 4
+    Padding.Top = 4
+    Padding.Right = 4
+    Padding.Bottom = 2
+    ParentBackground = False
+    ParentCtl3D = False
+    TabOrder = 0
+    object HintLabel: TLabel
+      Left = 5
+      Top = 5
+      Width = 188
+      Height = 30
+      Align = alClient
+      AutoSize = False
+      Color = clBtnFace
+      ParentColor = False
+      Transparent = True
+      WordWrap = True
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitWidth = 198
+      ExplicitHeight = 38
+    end
+  end
+end

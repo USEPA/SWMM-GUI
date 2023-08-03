@@ -1,0 +1,1160 @@
+{-------------------------------------------------------------------}
+{                    Unit:    Objprops.txt                          }
+{                    Project: EPASWMM                               }
+{                    Version: 5.2                                   }
+{                    Date:    11/12/22    (5.2.2)                   }
+{                    Author:  L. Rossman                            }
+{                                                                   }
+{  Constants used with EPASWMM and imported into Uproject.pas.      }
+{-------------------------------------------------------------------}
+
+const
+
+//---------------------------
+// Labels for Project objects
+//---------------------------
+  ObjectLabels: array[0..MAXCLASS] of PChar =
+    ('Title / Notes', 'Option', 'Rain Gage', 'Subcatchment','Junction',
+     'Outfall', 'Divider', 'Storage Unit', 'Conduit', 'Pump', 'Orifice',
+     'Weir', 'Outlet', 'Label', 'Control Curve', 'Diversion Curve',
+     'Pump Curve', 'Rating Curve', 'Shape Curve', 'Storage Curve',
+     'Tidal Curve', 'Weir Curve', 'Time Series', 'Time Pattern', 'Transect',
+     'Unit Hydrograph', 'Pollutant', 'Land Use', 'Aquifer',
+     'Control Rule', 'Climatology', 'Snow Pack', 'LID Control',
+     'Street Section', 'Inlet');
+
+//---------------------------
+// Labels for Project options
+//---------------------------
+  OptionLabels: array[0..MAXOPTIONS] of PChar =
+    (
+     'COMPATIBILITY',
+     'REPORT_CONTROLS',
+     'REPORT_INPUT',
+
+     'FLOW_UNITS',
+     'INFILTRATION',
+     'FLOW_ROUTING',
+     'LINK_OFFSETS',
+     'MIN_SLOPE',
+     'ALLOW_PONDING',
+     'SKIP_STEADY_STATE',
+
+     'IGNORE_RAINFALL',
+     'IGNORE_RDII',
+     'IGNORE_SNOWMELT',
+     'IGNORE_GROUNDWATER',
+     'IGNORE_ROUTING',
+     'IGNORE_QUALITY',
+
+     'START_DATE',
+     'START_TIME',
+     'REPORT_START_DATE',
+     'REPORT_START_TIME',
+     'END_DATE',
+     'END_TIME',
+     'SWEEP_START',
+     'SWEEP_END',
+     'DRY_DAYS',
+     'REPORT_STEP',
+     'WET_STEP',
+     'DRY_STEP',
+     'ROUTING_STEP',
+     'RULE_STEP',
+
+     'INERTIAL_DAMPING',
+     'NORMAL_FLOW_LIMITED',
+     'FORCE_MAIN_EQUATION',
+     'SURCHARGE_METHOD',
+     'VARIABLE_STEP',
+     'LENGTHENING_STEP',
+     'MIN_SURFAREA',
+     'MAX_TRIALS',
+     'HEAD_TOLERANCE',
+     'SYS_FLOW_TOL',
+     'LAT_FLOW_TOL',
+     'MINIMUM_STEP',
+     'THREADS');
+
+//-----------------------------
+// Raingage data source options
+//-----------------------------
+  RaingageOptions: array[0..1] of PChar =
+    ('TIMESERIES', 'FILE');
+
+  RainUnits: array[0..1] of PChar =
+    ('IN', 'MM');
+
+//---------------------------
+// Flow units choices
+//---------------------------
+  FlowUnitsOptions: array[0..5] of PChar =
+    ('CFS', 'GPM', 'MGD', 'CMS', 'LPS', 'MLD');
+
+//---------------------------
+// Link offsets choices
+//---------------------------
+  LinkOffsetsOptions: array[0..1] of PChar =
+    ('DEPTH', 'ELEVATION');
+
+//----------------------------
+// Infiltration model options
+//----------------------------
+  InfilOptions: array[0..4] of PChar =
+    ('HORTON', 'MODIFIED_HORTON', 'GREEN_AMPT',
+     'MODIFIED_GREEN_AMPT', 'CURVE_NUMBER');
+
+//---------------------
+// Temperature keywords
+//---------------------
+  TempKeywords: array[0..4] of PChar =
+    ('TIMESERIES', 'FILE', 'WINDSPEED', 'SNOWMELT', 'ADC');
+
+//---------------------------
+// Temperature units keywords
+//---------------------------
+  TempUnitsKeywords: array[0..2] of PChar =
+    ('C10', 'C', 'F');
+
+//-------------------------
+// Evaporation data options
+//-------------------------
+  EvapOptions: array[0..4] of PChar =
+    ('CONSTANT', 'TIMESERIES', 'FILE', 'MONTHLY', 'TEMPERATURE');
+
+//----------------------
+// Snowpack data options
+//----------------------
+  SnowpackOptions: array[0..3] of PChar =
+    ('PLOWABLE', 'IMPERVIOUS', 'PERVIOUS', 'REMOVAL');
+
+//----------------------------
+// Routing method options
+//----------------------------
+  RoutingOptions: array[0..2] of PChar =
+    ('STEADY', 'KINWAVE', 'DYNWAVE');
+  OldRoutingOptions: array[0..2] of PChar =
+    ('UF', 'KW', 'DW');
+
+//----------------------------
+// Dynamic Wave options
+//----------------------------
+  DynWaveOptions: array[0..2] of PChar =
+    ('EULER', 'PICARD', 'HYBRID');
+
+//----------------------------
+// Force Main Equation Options
+//----------------------------
+  ForceMainEqnOptions: array[0..1] of PChar =
+    ('H-W', 'D-W');
+
+//----------------------------
+// Pump Curve types
+//----------------------------
+  PumpTypes: array[0..3] of PChar =
+    ('TYPE1', 'TYPE2', 'TYPE3', 'TYPE4');
+
+//----------------------------
+// Weir types and their shapes
+//----------------------------
+  WeirTypes: array[0..4] of PChar =
+    ('TRANSVERSE', 'SIDEFLOW', 'V-NOTCH', 'TRAPEZOIDAL', 'ROADWAY');
+  WeirShapes: array[0..4] of PChar =
+    ('RECT_OPEN', 'RECT_OPEN', 'TRIANGULAR', 'TRAPEZOIDAL', 'RECT_OPEN');
+
+//---------------------------
+// DWF Pattern types
+//---------------------------
+  PatternTypes: array[0..3] of PChar =
+    ('MONTHLY', 'DAILY', 'HOURLY', 'WEEKEND');
+
+//---------------
+// Map properties
+//---------------
+  MapWords: array[0..1] of PChar =
+    ('DIMENSIONS', 'UNITS');
+
+//------------------------------
+// Map backdrop image properties
+//------------------------------
+  BackdropWords: array[0..4] of PChar =
+    ('FILE','DIMENSIONS','UNITS','OFFSET','SCALING');
+
+//---------------------------
+// Outfall Options
+//---------------------------
+  OutfallOptions: array[0..4] of PChar =
+    ('FREE', 'NORMAL', 'FIXED', 'TIDAL', 'TIMESERIES');
+  FREE_OUTFALL        = 0;
+  NORMAL_OUTFALL      = 1;
+  FIXED_OUTFALL       = 2;
+  TIDAL_OUTFALL       = 3;
+  TIMESERIES_OUTFALL  = 4;
+
+//---------------------------
+// Divider Options
+//---------------------------
+  DividerOptions: array[0..3] of PChar =
+    ('CUTOFF', 'TABULAR', 'WEIR', 'OVERFLOW');
+  CUTOFF_DIVIDER   = 0;
+  TABULAR_DIVIDER  = 1;
+  WEIR_DIVIDER     = 2;
+  OVERFLOW_DIVIDER = 3;
+
+//---------------------------
+// Curve Type Options
+//---------------------------
+  CurveTypeOptions: array[0..11] of PChar =
+    ('CONTROL', 'DIVERSION', 'PUMP1', 'PUMP2', 'PUMP3', 'PUMP4', 'PUMP5',
+     'RATING', 'SHAPE', 'STORAGE',  'TIDAL', 'WEIR');
+
+//--------------------------
+// Months of the Year
+//--------------------------
+  MonthLabels: array[0..12] of PChar =
+    ('All', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+
+//-------------------------------
+// Unit Hydrograph Response Types
+//-------------------------------
+  ResponseTypes: array[0..2] of PChar =
+    ('Short', 'Medium', 'Long');
+
+//---------------------------
+// Interface File Types
+//---------------------------
+  IfaceFileTypes: array[0..5] of PChar =
+    ('RAINFALL', 'RUNOFF', 'RDII', 'HOTSTART', 'INFLOWS', 'OUTFLOWS');
+    
+  DefRaingage: array [0..14] of String =
+    ('',           //0 - ID
+     '',           //1 - X
+     '',           //2 - Y
+     '',           //3 - Comment
+     '',           //4 - Tag
+     'INTENSITY',  //5 - Format
+     '1:00',       //6 - Interval
+     '1.0',        //7 - Snow Catch
+     'TIMESERIES', //8 - Data Source
+     '',           //9
+     '',           //10 - Time Series
+     '',           //11
+     '',           //12 - Data File
+     '*',          //13 - Station
+     'IN');        //14 - Units
+
+  DefSubcatch: array[0..27] of String =
+    ('',        //0 - ID
+     '',        //1 - X
+     '',        //2 - Y
+     '',        //3 - Comment
+     '',        //4 - Tag
+     '*',       //5 - Raingage
+     '*',       //6 - Outlet Node
+     '5',       //7 - Area
+     '500',     //8 - Width
+     '0.5',     //9 - % Slope
+     '25',      //10 - % Impervious
+     '0.01',    //11 - Impervious N
+     '0.1',     //12 - Pervious N
+     '0.05',    //13 - Impervious DS
+     '0.05',    //14 - Pervious DS
+     '25',      //15 - %Zero
+     'OUTLET',  //16 - Route To
+     '100',     //17 - Pct. Routed
+     'HORTON',  //18 - Infil. Model
+     'NO',      //19 - Groundwater
+     '',        //20 - Snow Pack
+     '0',       //21 - LIDs
+     '0',       //22 - Landuses
+     'NONE',    //23 - Init. Buildup
+     '0',       //24 - Curb Length
+     '',        //25 - N-Perv Pattern
+     '',        //26 - DS Pattern
+     '');       //27 - Infil. Pattern
+
+  SubcatchPropUnits: array[0..27,0..1] of String =
+    ( ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      (' (ac)', ' (ha)'),
+      (' (ft)', ' (m)'),
+      (' (%)',  ' (%)'),
+      (' (%)',  ' (%)'),
+      ('',''),
+      ('',''),
+      (' (in)', ' (mm)'),
+      (' (in)', ' (mm)'),
+      (' (%)',  ' (%)'),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''));
+
+  DefJunction: array [0..11] of String =
+    ('',        //0 - ID
+     '',        //1 - X
+     '',        //2 - Y
+     '',        //3 - Comment
+     '',        //4 - Tag
+     'NO',      //5 - Inflows
+     'NO',      //6 - Treatment
+     '0',       //7 - Invert
+     '0',       //8 - Max. Depth
+     '0',       //9 - Init. Depth
+     '0',       //10 - Surcharge Depth
+     '0');      //11 - Ponded Area
+
+  JunctionPropUnits: array [0..11, 0..1] of String =
+    ( ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      (' (ft)', ' (m)'),
+      (' (ft)', ' (m)'),
+      (' (ft)', ' (m)'),
+      (' (ft)', ' (m)'),
+      (' (ft'+#178+')', ' (m'+#178+')'));
+
+  DefOutfall: array [0..16] of String =
+    ('',         //0 - ID
+     '',         //1 - X
+     '',         //2 - Y
+     '',         //3 - Comment
+     '',         //4 - Tag
+     'NO',       //5 - Inflows
+     'NO',       //6 - Treatment
+     '0',        //7 - Invert
+     'NO',       //8 - Tide gates
+     '',         //9 - Route to
+     'FREE',     //10 - Boundary Type
+     '',         //11
+     '0',        //12 - Fixed stage
+     '',         //13
+     '*',        //14 - Tidal table
+     '',         //15
+     '*');       //16 - Time series
+
+  OutfallPropUnits: array [0..16, 0..1] of String =
+    ( ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      ('',''),
+      (' (ft)', ' (m)'),
+      ('', ''),
+      ('', ''),
+      ('', ''),
+      ('', ''),
+      (' (ft)', ' (m)'),
+      ('', ''),
+      ('', ''),
+      ('', ''),
+      ('', ''));
+
+  DefDivider: array[0..21] of String =
+    ('',           //0 - ID
+     '',           //1 - X
+     '',           //2 - Y
+     '',           //3 - Comment
+     '',           //4 - Tag
+     'NO',         //5 - Inflows
+     'NO',         //6 - Treatment
+     '0',          //7 - Invert
+     '0',          //8 - Max. Depth
+     '0',          //9 - Init. Depth
+     '0',          //10 - Surcharge Depth
+     '0',          //11 - Ponded Area
+     '*',          //12 - Diverted Link
+     'CUTOFF',     //13 - Type
+     '',           //14
+     '0',          //15 - Qcutoff
+     '',           //16
+     '*',          //17 - Flow Table
+     '',           //18
+     '0',          //19 - Qmin
+     '0',          //20 - Dmax
+     '0');         //21 - C-discarge
+
+  DividerPropUnits: array [0..21, 0..1] of String =
+    ( ('',''), ('',''), ('',''), ('',''), ('',''), ('',''), ('',''),
+      (' (ft)',' (m)'), (' (ft)', ' (m)'), (' (ft)', ' (m)'),
+      (' (ft)', ' (m)'),(' (ft'+#178+')', ' (m'+#178+')'),
+      ('',''), ('',''), ('',''), ('',''),
+      ('',''), ('',''), ('',''), ('',''),
+      (' (ft)',' (m)'), ('','')
+    );
+
+  DefStorage: array[0..17] of String =
+    ('',           //0 - ID
+     '',           //1 - X
+     '',           //2 - Y
+     '',           //3 - Comment
+     '',           //4 - Tag
+     'NO',         //5 - Inflows
+     'NO',         //6 - Treatment
+     '0',          //7 - Invert
+     '5',          //8 - Max. Depth
+     '0',          //9 - Init. Depth
+     '0',          //10 - Surcharge Depth
+     '0',          //11 - Evap. Factor
+     'NO',         //12 - Seepage Loss
+     'FUNCTIONAL', //13 - Storage Curve
+     '1000',       //14 - Coeff0
+     '0',          //15 - Coeff1
+     '0',          //16 - Coeff2
+     ''            //17 - Storage Curve Table
+     );
+
+  StoragePropUnits: array [0..13, 0..1] of String =
+    ( ('',''), ('',''), ('',''), ('',''), ('',''), ('',''), ('',''),
+      (' (ft)',' (m)'),
+      (' (ft)',' (m)'),
+      (' (ft)',' (m)'),
+      (' (ft)',' (m)'), ('',''), ('',''),
+      ('','')
+    );
+
+  DefConduit: array [0..25] of String =
+    ('',         //0 - ID
+     '',         //1 - Start node
+     '',         //2 - End node
+     '',         //3 - Comment
+     '',         //4 - Tag
+     'CIRCULAR', //5 - Xsection
+     '1',        //6 - Max. Depth
+     '400',      //7 - Length
+     '0.01',     //8 - Roughness Coeff.
+     '0',        //9 - Upstream Offset
+     '0',        //10 - Downstream Offset
+     '0',        //11 - Init. Flow
+     '0',        //12 - Max. Flow
+     '0',        //13 - Entry Loss Coeff.
+     '0',        //14 - Exit Loss Coeff.
+     '0',        //15 - Avg. Loss Coeff.
+     '0',        //16 - Seepage Rate
+     'NO',       //17 - Check Valve
+     '',         //18 - Culvert Code
+     'NO',       //19 - Inlet Indicator
+     '0',        //20 - Width Param.
+     '0',        //21 - Left Slope
+     '0',        //22 - Right Slope
+     '1',        //23 - Barrels
+     '',         //24 - Transect ID
+     '');        //25 - Inlet Params.
+
+  ConduitPropUnits: array [0..19, 0..1] of String =
+    ( ('',''), ('',''), ('',''), ('',''), ('',''), ('',''),
+      (' (ft)',' (m)'), (' (ft)',' (m)'), ('',''),
+      (' (ft)',' (m)'), (' (ft)',' (m)'), ('',''),
+      ('',''), ('',''), ('',''), ('',''), (' (in/hr)',' (mm/hr)'),
+      ('',''), ('',''), ('','')
+    );
+
+  DefPump: array [0..8] of String =
+    ('',            //0 - ID
+     '',            //1 - Start node
+     '',            //2 - End node
+     '',            //3 - Comment
+     '',            //4 - Tag
+     '*',           //5 - Curve
+     'ON',          //6 - Init. Status
+     '0',           //7 - Startup Depth
+     '0');          //8 - Shutoff Depth
+
+  PumpPropUnits: array [0..8, 0..1] of String =
+    ( ('',''), ('',''), ('',''), ('',''), ('',''), ('',''),
+      ('',''), (' (ft)',' (m)'), (' (ft)',' (m)')
+    );
+
+  DefOrifice: array [0..12] of String =
+    ('',            //0 - ID
+     '',            //1 - Start node
+     '',            //2 - End node
+     '',            //3 - Comment
+     '',            //4 - Tag
+     'SIDE',        //5 - Type
+     'CIRCULAR',    //6 - Shape
+     '1',           //7 - Height
+     '1',           //8 - Width
+     '0',           //9 - Crest Ht.
+     '0.65',        //10 - Disch. Coeff.
+     'NO',          //11 - Flap Gate
+     '0');          //12 - Open/Close Time
+
+  OrificePropUnits: array [0..12, 0..1] of String =
+    ( ('',''), ('',''), ('',''), ('',''), ('',''), ('',''), ('',''),
+      (' (ft)',' (m)'), (' (ft)',' (m)'), (' (ft)',' (m)'),
+      ('',''), ('',''), ('','')
+    );
+
+  DefWeir: array [0..19] of String =
+    ('',            //0 - ID
+     '',            //1 - Start node
+     '',            //2 - End node
+     '',            //3 - Comment
+     '',            //4 - Tag
+     'TRANSVERSE',  //5 - Type
+     '1',           //6 - Height
+     '1',           //7 - Width
+     '0',           //8 - Side Slope
+     '0',           //9 - Crest Height
+     '3.33',        //10 - Disch. Coeff.
+     'NO',          //11 - Flap Gate
+     '0',           //12 - End Contractions
+     '0',           //13 - End Disch. Coeff.
+     'YES',         //14 - Can Surcharge
+     '',            //15 - Coeff. Curve
+      '',           //16
+     '0',           //17 - Road Width
+     'PAVED',       //18 - Road Surface
+     'RECT_OPEN');  //19 - Shape
+
+  WeirPropUnits: array [0..18, 0..1] of String =
+    ( ('',''), ('',''), ('',''), ('',''), ('',''), ('',''),
+      (' (ft)',' (m)'), (' (ft)',' (m)'), ('',''),
+      (' (ft)',' (m)'), (' (CFS)',' (CMS)'), ('',''),
+      ('',''), (' (CFS)',' (CMS)'), ('',''), ('',''),
+      ('',''), (' (ft)',' (m)'), ('','')
+    );
+
+  DefOutlet: array[0..12] of String =
+    ('',            //0 - ID
+     '',            //1 - Start node
+     '',            //2 - End node
+     '',            //3 - Comment
+     '',            //4 - Tag
+     '0',           //5 - Height
+     'NO',          //6 - Flap Gate
+     'FUNCTIONAL/DEPTH',  //7 - Discharge Curve
+     '',            //8 - Heading
+     '10.0',        //9 - Discharge Coeff.
+     '0.5',         //10 - Discharge Expon.
+     '',            //11 - Heading
+     '*');          //12 - Discharge Table
+
+  OutletPropUnits: array [0..12, 0..1] of String =
+    ( ('',''), ('',''), ('',''), ('',''), ('',''), (' (ft)',' (m)'),
+      ('',''), ('',''), ('',''), ('feet','meters'), ('feet','meters'),
+      ('',''), ('','')
+    );
+
+  DefOptions: array [0..MAXOPTIONS] of String =
+    (
+     '4',            // 0 - SWMM Version Compatibility
+     'NO',           // 1 - Report Control Actions
+     'NO',           // 2 - Report Input Summary
+
+     'CFS',          // 3 - Flow Units
+     'HORTON',       // 4 - Infiltration
+     'DYNWAVE',      // 5 - Flow Routing
+     'DEPTH',        // 6 - Link Offsets
+     '0',            // 7 - Minimum Slope
+     'NO',           // 8 - Allow Ponding
+     'NO',           // 9 - Skip Steady State Periods
+
+     'NO',           // 10 - Ignore Rainfall/Runoff
+     'NO',           // 11 - Ignore RDII
+     'NO',           // 12 - Ignore Snow Melt
+     'NO',           // 13 - Ignore Groundwater
+     'NO',           // 14 - Ignore Routing
+     'NO',           // 15 - Ignore Quality
+
+     '',             // 16 - Start Date
+     '',             // 17 - Start Time
+     '',             // 18 - Report Start Date
+     '',             // 19 - Report Start Time
+     '',             // 20 - End Date
+     '06:00:00',     // 21 - End Time
+     '1/1',          // 22 - Sweep Start
+     '12/31',        // 23 - Sweep End
+     '0',            // 24 - Dry days
+     '00:15:00',     // 25 - Report Step
+     '00:05:00',     // 26 - Wet Step
+     '01:00:00',     // 27 - Dry Step
+     '20',           // 28 - Route Step
+     '00:00:00',     // 29 - Rule Time Step
+
+     'PARTIAL',      // 30 - Inertial Damping
+     'BOTH',         // 31 - Normal Flow Ltd. Option
+     'H-W',          // 32 - Force Main Equation
+     'EXTRAN',       // 33 - Surcharge Method
+     '75',           // 34 - Variable Time Step Factor
+     '0',            // 35 - Lengthening Step
+     '0',            // 36 - Min. Surface Area
+     '0',            // 37 - Maximum Trials
+     '0',            // 38 - Head Tolerance
+     '5',            // 39 - System Flow Tolerance
+     '5',            // 40 - Lateral Flow Tolerance
+     '0.5',          // 41 - Minimum Routing Step
+     '1');           // 42 - Number of Threads
+
+  DefPollutant: array[0..8] of String =
+    ('MG/L',         // 0 - Mass units
+     '0',            // 1 - Rain concen.
+     '0',            // 2 - GW concen.
+     '0',            // 3 - II concen.
+     '0',            // 4 - DWF concen.
+     '0',            // 5 - Decay coeff.
+     'NO',           // 6 - Snow only buildup
+     '',             // 7 - Co-pollutant
+     '');            // 8 - Co-pollut. fraction
+
+  DefStreet: array[0..9] of String =
+    ('30',           // 0 - crown width
+     '0.5',          // 1 - curb height
+     '2',            // 2 - cross slope (%)
+     '0.016',        // 3 - Mannings n
+     '0',            // 4 - depression height
+     '0',            // 5 - depression width
+     '2',            // 6 - number of sides
+     '0',            // 7 - backing width
+     '0',            // 8 - backing slope
+     '0');           // 9 - backing Mannings n
+
+  DefTransect: array[0..7] of String =
+    ('0.0',          // 0 - N left overbank
+     '0.0',          // 1 - N right overbank
+     '0.01',         // 2 - N main channel
+     '0.0',          // 3 - left bank station
+     '0.0',          // 4 - right bank station
+     '0.0',          // 5 - station modifier
+     '0.0',          // 6 - elevation modifier
+     '0.0');         // 7 - meander modifier
+
+  DefHortonInfil: array[0..MAXINFILPROPS] of String =
+    ('3.0', '0.5', '4', '7', '0', '');
+  DefGreenAmptInfil: array[0..MAXINFILPROPS] of String =
+    ('3.5', '0.5', '0.25', ' ', ' ', '');
+  DefCurveNumInfil: array[0..MAXINFILPROPS] of String =
+    ('80', '0.5', '7', ' ', ' ', '');
+
+  DefSnowMelt: array[1..6] of String =
+    ('34',           // air temp. for snow
+     '0.5',          // ATI weight
+     '0.6',          // neg. melt ratio
+     '0.0',          // elevation
+     '50.0',         // latitude
+     '0.0');         // longitude correction
+
+  DefADCurve: array[1..10] of String =
+    ('1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0');
+
+  NatADCurve: array[1..10] of String =
+    ('0.10', '0.35', '0.53', '0.66', '0.75',
+     '0.82', '0.87', '0.92', '0.95', '0.98');
+
+  DefSnowpack: array[1..8] of String =
+    ('0.001',        // min. melt coeff. (in/hr-degF)
+     '0.001',        // max. melt coeff.
+     '32.0',         // melt base temp. (degF)
+     '0.10',         // free water holding capacity
+     '0.00',         // init. snow depth
+     '0.00',         // init. free water
+     '0.00',         // fraction 100% snow covered
+     '1.00');        // depth at 100% cover (ft)
+
+//-----------------------------------------------------------------
+// Project object property lists
+// The fields of a TPropRecord are defined in the PropEdit.pas unit.
+//-----------------------------------------------------------------
+var
+
+  RaingageProps: array [0..14] of TPropRecord =
+   ((Name:'Name';           Style:esEdit;           Mask:emNoSpace),
+    (Name:'X-Coordinate';   Style:esEdit;           Mask:emNumber;    Length:0),
+    (Name:'Y-Coordinate';   Style:esEdit;           Mask:emNumber;    Length:0),
+    (Name:'Description';    Style:esButton;         Mask:emNone;      Length:0),
+    (Name:'Tag';            Style:esEdit;           Mask:emNoSpace;   Length:0),
+    (Name:'Rain Format';    Style:esComboList;      Mask:emNone;      Length:0;
+     List:'INTENSITY'#13'VOLUME'#13'CUMULATIVE'),
+    (Name:'Time Interval';  Style:esComboEdit;      Mask:emNone;      Length:0;
+     List:'0:01'#13'0:05'#13'0:10'#13'0:15'#13'0:20'#13'0:30'#13'1:00'+
+          #13'6:00'#13'12:00'#13'24:00'),
+    (Name:'Snow Catch Factor'; Style:esEdit;        Mask:emPosNumber; Length:0),
+    (Name:'Data Source';    Style:esComboList;      Mask:emNone;      Length:0;
+     List:'TIMESERIES'#13'FILE'),
+    (Name:'TIME SERIES:';   Style:esHeading;        Mask:emNone),
+    (Name:' - Series Name'; Style:esComboEdit;      Mask:emNone;      Length:0;
+     List:''),
+    (Name:'DATA FILE:';     Style:esHeading;        Mask:emNone),
+    (Name:' - File Name';   Style:esButton;         Mask:emNone;      Length:0),
+    (Name:' - Station ID';  Style:esEdit;           Mask:emNoSpace;   Length:0),
+    (Name:' - Rain Units';  Style:esComboList;      Mask:emNone;      Length:0;
+     List:'IN'#13'MM'));
+
+  SubcatchProps: array [0..27] of TPropRecord =
+    ((Name:'Name';              Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'X-Coordinate';      Style:esEdit;      Mask:emNumber;    Length:0),
+     (Name:'Y-Coordinate';      Style:esEdit;      Mask:emNumber;    Length:0),
+     (Name:'Description';       Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Tag';               Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'Rain Gage';         Style:esComboEdit; Mask:emNoSpace;   Length:0;
+      List:''),
+     (Name:'Outlet';            Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'Area';              Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Width';             Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'% Slope';           Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'% Imperv';          Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'N-Imperv';          Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'N-Perv';            Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Dstore-Imperv';     Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Dstore-Perv';       Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'%Zero-Imperv';      Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Subarea Routing';   Style:esComboList; Mask:emNone;      Length:0;
+      List:'OUTLET'#13'IMPERVIOUS'#13'PERVIOUS'),
+     (Name:'Percent Routed';    Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Infiltration Data'; Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Groundwater';       Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Snow Pack';         Style:esComboEdit; Mask:emNone;      Length:0;
+      List:''),
+     (Name:'LID Controls';      Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Land Uses';         Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Initial Buildup';   Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Curb Length';       Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'N-Perv Pattern';    Style:esComboEdit; Mask:emNone;      Length:0),
+     (Name:'Dstore Pattern';    Style:esComboEdit; Mask:emNone;      Length:0),
+     (Name:'Infil. Pattern';    Style:esComboEdit; Mask:emNone;      Length:0)
+    );
+
+  JunctionProps: array [0..11] of TPropRecord =
+    ((Name:'Name';              Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'X-Coordinate';      Style:esEdit;      Mask:emNumber;     Length:0),
+     (Name:'Y-Coordinate';      Style:esEdit;      Mask:emNumber;     Length:0),
+     (Name:'Description';       Style:esButton;    Mask:emNone;       Length:0),
+     (Name:'Tag';               Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Inflows';           Style:esButton;    Mask:emNone;       Length:0),
+     (Name:'Treatment';         Style:esButton;    Mask:emNone;       Length:0),
+     (Name:'Invert El.';        Style:esEdit;      Mask:emNumber;     Length:0),
+     (Name:'Max. Depth';        Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Initial Depth';     Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Surcharge Depth';   Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Ponded Area';       Style:esEdit;      Mask:emPosNumber;  Length:0));
+
+  OutfallProps: array[0..16] of TPropRecord =
+    ((Name:'Name';              Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'X-Coordinate';      Style:esEdit;      Mask:emNumber;    Length:0),
+     (Name:'Y-Coordinate';      Style:esEdit;      Mask:emNumber;    Length:0),
+     (Name:'Description';       Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Tag';               Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'Inflows';           Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Treatment';         Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Invert El.';        Style:esEdit;      Mask:emNumber;    Length:0),
+     (Name:'Tide Gate';         Style:esComboList; Mask:emNone;      Length:0;
+      List:'NO'#13'YES'),
+     (Name:'Route To';          Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'Type';              Style:esComboList; Mask:emNone;      Length:0;
+      List:'FREE'#13'NORMAL'#13'FIXED'#13'TIDAL'#13'TIMESERIES'),
+     (Name:'Fixed Outfall';     Style:esHeading),
+     (Name:'  Fixed Stage';     Style:esEdit;      Mask:emNumber;    Length:0),
+     (Name:'Tidal Outfall';     Style:esHeading),
+     (Name:'  Curve Name';      Style:esComboEdit; Mask:emNoSpace;   Length:0;
+      List:''),
+     (Name:'Time Series Outfall'; Style:esHeading),
+     (Name:'  Series Name';     Style:esComboEdit; Mask:emNoSpace;   Length:0;
+      List:'')
+    );
+
+  DividerProps: array [0..21] of TPropRecord =
+    ((Name:'Name';              Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'X-Coordinate';      Style:esEdit;      Mask:emNumber;    Length:0),
+     (Name:'Y-Coordinate';      Style:esEdit;      Mask:emNumber;    Length:0),
+     (Name:'Description';       Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Tag';               Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'Inflows';           Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Treatment';         Style:esButton;    Mask:emNone;      Length:0),
+     (Name:'Invert El.';        Style:esEdit;      Mask:emNumber;    Length:0),
+     (Name:'Max. Depth';        Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Initial Depth';     Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Surcharge Depth';   Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Ponded Area';       Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Diverted Link';     Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'Type';              Style:esComboList; Mask:emNone;      Length:0;
+      List:'CUTOFF'#13'TABULAR'#13'WEIR'#13'OVERFLOW'),
+     (Name:'Cutoff Divider';    Style:esHeading;   Mask:emNone),
+     (Name:'  Cutoff Flow';     Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'Tabular Divider';   Style:esHeading;   Mask:emNone),
+     (Name:'  Curve Name';      Style:esComboEdit; Mask:emNoSpace;   Length:0;
+      List:''),
+     (Name:'Weir Divider';      Style:esHeading;   Mask:emNone),
+     (Name:'  Min. Flow';       Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'  Max. Depth';      Style:esEdit;      Mask:emPosNumber; Length:0),
+     (Name:'  Coefficient';     Style:esEdit;      Mask:emPosNumber; Length:0)
+    );
+
+  StorageProps: array [0..13] of TPropRecord =
+    ((Name:'Name';              Style:esEdit;      Mask:emNoSpace;     Length:0),
+     (Name:'X-Coordinate';      Style:esEdit;      Mask:emNumber;      Length:0),
+     (Name:'Y-Coordinate';      Style:esEdit;      Mask:emNumber;      Length:0),
+     (Name:'Description';       Style:esButton;    Mask:emNone;        Length:0),
+     (Name:'Tag';               Style:esEdit;      Mask:emNoSpace;     Length:0),
+     (Name:'Inflows';           Style:esButton;    Mask:emNone;        Length:0),
+     (Name:'Treatment';         Style:esButton;    Mask:emNone;        Length:0),
+     (Name:'Invert El.';        Style:esEdit;      Mask:emNumber;      Length:0),
+     (Name:'Max. Depth';        Style:esEdit;      Mask:emPosNumber;   Length:0),
+     (Name:'Initial Depth';     Style:esEdit;      Mask:emPosNumber;   Length:0),
+     (Name:'Surcharge Depth';   Style:esEdit;      Mask:emPosNumber;   Length:0),
+     (Name:'Evap. Factor';      Style:esEdit;      Mask:emPosNumber;   Length:0),
+     (Name:'Seepage Loss';      Style:esButton;    Mask:emNone;        Length:0),
+     (Name:'Storage Shape';     Style:esButton;    Mask:emNone;        Length:0)
+    );
+
+  ConduitProps: array [0..19] of TPropRecord =
+    ((Name:'Name';              Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Inlet Node';        Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Outlet Node';       Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Description';       Style:esButton;    Mask:emNone),
+     (Name:'Tag';               Style:esEdit;      Mask:emNoSpace),
+     (Name:'Shape';             Style:esButton;    Mask:emNone;       Length:0),
+     (Name:'Max. Depth';        Style:esEdit;      Mask:emPosNumber),
+     (Name:'Length';            Style:esEdit;      Mask:emPosNumber),
+     (Name:'Roughness';         Style:esEdit;      Mask:emPosNumber),
+     (Name:'Inlet Offset';      Style:esEdit;      Mask:emNoSpace),
+     (Name:'Outlet Offset';     Style:esEdit;      Mask:emNoSpace),
+     (Name:'Initial Flow';      Style:esEdit;      Mask:emNumber),
+     (Name:'Maximum Flow';      Style:esEdit;      Mask:emPosNumber),
+     (Name:'Entry Loss Coeff.'; Style:esEdit;      Mask:emNumber),
+     (Name:'Exit Loss Coeff.';  Style:esEdit;      Mask:emNumber),
+     (Name:'Avg. Loss Coeff.';  Style:esEdit;      Mask:emNumber),
+     (Name:'Seepage Loss Rate'; Style:esEdit;      Mask:emNumber),
+     (Name:'Flap Gate';         Style:esComboList; Mask:emNone;       Length:0;
+      List:'NO'#13'YES'),
+     (Name:'Culvert Code';      Style:esButton;    Mask:emNone;       Length:0),
+     (Name:'Inlets';            Style:esButton;    Mask:emNone;       Length:0)
+     );
+
+  PumpProps: array [0..8] of TPropRecord =
+    ((Name:'Name';            Style:esEdit;       Mask:emNoSpace;  Length:0),
+     (Name:'Inlet Node';      Style:esEdit;       Mask:emNoSpace;  Length:0),
+     (Name:'Outlet Node';     Style:esEdit;       Mask:emNoSpace;  Length:0),
+     (Name:'Description';     Style:esButton;     Mask:emNone),
+     (Name:'Tag';             Style:esEdit;       Mask:emNoSpace),
+     (Name:'Pump Curve';      Style:esComboEdit;  Mask:emNoSpace;  Length:0;
+      List:''),
+     (Name:'Initial Status';  Style:esComboList;  Mask:emNone;     Length:0;
+      List:'OFF'#13'ON'),
+     (Name:'Startup Depth';   Style:esEdit;      Mask:emNumber),
+     (Name:'Shutoff Depth';   Style:esEdit;      Mask:emNumber));
+
+  OrificeProps: array[0..12] of TPropRecord =
+    ((Name:'Name';              Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Inlet Node';        Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Outlet Node';       Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Description';       Style:esButton;    Mask:emNone),
+     (Name:'Tag';               Style:esEdit;      Mask:emNoSpace),
+     (Name:'Type';              Style:esComboList; Mask:emNone;       Length:0;
+      List:'SIDE'#13'BOTTOM'),
+     (Name:'Shape';             Style:esComboList; Mask:emNone;       Length:0;
+      List:'CIRCULAR'#13'RECT_CLOSED'),
+     (Name:'Height';            Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Width';             Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Inlet Offset';      Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Discharge Coeff.';  Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Flap Gate';         Style:esComboList; Mask:emNone;       Length:0;
+      List:'NO'#13'YES'),
+     (Name:'Time to Open/Close';Style:esEdit;      Mask:emPosNumber;  Length:0));
+
+  WeirProps: array[0..18] of TPropRecord =
+    ((Name:'Name';              Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Inlet Node';        Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Outlet Node';       Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Description';       Style:esButton;    Mask:emNone),
+     (Name:'Tag';               Style:esEdit;      Mask:emNoSpace),
+     (Name:'Type';              Style:esComboList; Mask:emNone;       Length:0;
+      List:'TRANSVERSE'#13'SIDEFLOW'#13'V-NOTCH'#13'TRAPEZOIDAL'#13'ROADWAY'),
+     (Name:'Height';            Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Length';            Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Side Slope';        Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Inlet Offset';      Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Discharge Coeff.';  Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Flap Gate';         Style:esComboList; Mask:emNone;       Length:0;
+      List:'NO'#13'YES'),
+     (Name:'End Contractions';  Style:esComboList; Mask:emNone;       Length:0;
+      List:'0'#13'1'#13'2'),
+     (Name:'End Coeff.';        Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Can Surcharge';     Style:esComboList; Mask:emNone;       Length:0;
+      List:'NO'#13'YES'),
+     (Name:'Coeff. Curve';      Style:esComboEdit; Mask:emNoSpace;    Length:0;
+      List:''),
+     (Name:'Roadway Weir';      Style:esHeading;   Mask:emNone),
+     (Name:'Road Width';        Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Road Surface';      Style:esComboList; Mask:emNone;       Length:0;
+      List:'PAVED'#13'GRAVEL'));
+
+  OutletProps: array[0..12] of TPropRecord =
+    ((Name:'Name';              Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Inlet Node';        Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Outlet Node';       Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Description';       Style:esButton;    Mask:emNone),
+     (Name:'Tag';               Style:esEdit;      Mask:emNoSpace),
+     (Name:'Inlet Offset';      Style:esEdit;      Mask:emNoSpace;    Length:0),
+     (Name:'Flap Gate';         Style:esComboList; Mask:emNone;       Length:0;
+      List:'NO'#13'YES'),
+     (Name:'Rating Curve';      Style:esComboList; Mask:emNone;       Length:0;
+      List:'FUNCTIONAL/DEPTH'#13'TABULAR/DEPTH'#13+
+           'FUNCTIONAL/HEAD'#13'TABULAR/HEAD'),
+     (Name:'Functional Curve';  Style:esHeading;   Mask:emNone),
+     (Name:'  Coefficient';     Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'  Exponent';        Style:esEdit;      Mask:emPosNumber;  Length:0),
+     (Name:'Tabular Curve';     Style:esHeading;   Mask:emNone),
+     (Name:'  Curve Name';      Style:esComboEdit; Mask:emNoSpace;    Length:0;
+      List:'')
+    );
+
+  LabelProps: array [0..4] of TPropRecord =
+   ((Name:'Text';               Style:esEdit;       Mask:emNone),
+    (Name:'X-Coordinate';       Style:esEdit;       Mask:emNumber),
+    (Name:'Y-Coordinate';       Style:esEdit;       Mask:emNumber),
+    (Name:'Anchor Node';        Style:esEdit;       Mask:emNoSpace;  Length:0),
+    (Name:'Font';               Style:esButton;     Mask:emNone));
+
+  RaingageHint: array[0..14] of String =
+    ('User-assigned name of rain gage',
+     'X coordinate of rain gage on study area map',
+     'Y coordinate of rain gage on study area map',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Type of rainfall data recorded at rain gage',
+     'Data recording time interval at rain gage',
+     'Correction factor applied to snowfall',
+     'Source of rainfall data',
+     '',
+     'Name of rainfall time series (double-click to edit time series)',
+     '',
+     'Name of rainfall data file',
+     'Station ID for user-prepared file format',
+     'Rainfall units for user-prepared file format');
+
+  SubcatchHint: array[0..27] of String =
+    ('User-assigned name of subcatchment',
+     'X coordinate of subcatchment centroid on map',
+     'Y coordinate of subcatchment centroid on map',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Rain gage assigned to subcatchment',
+     'Name of node or another subcatchment that receives runoff',
+     'Area of subcatchment',
+     'Width of overland flow path',
+     'Average surface slope',
+     'Percent of impervious area',
+     'Mannings N for impervious area',
+     'Mannings N for pervious area',
+     'Depth of depression storage on impervious area',
+     'Depth of depression storage on pervious area',
+     'Percent of impervious area with no depression storage',
+     'Choice of internal routing between pervious and impervious sub-areas',
+     'Percent of runoff routed between sub-areas',
+     'Infiltration parameters (click to edit)',
+     'Groundwater flow parameters (click to edit)',
+     'Name of snow pack parameter set (for snow melt analysis only)',
+     'LID controls (click to edit)',
+     'Assignment of land uses to subcatchment (click to edit)',
+     'Initial pollutant buildup on subcatchment (click to edit)',
+     'Curb length (if needed for pollutant buildup functions)',
+     'Optional monthly pattern that adjusts pervious Mannings N',
+     'Optional monthly pattern that adjusts depression storage',
+     'Optional monthly pattern that adjusts infiltration rate');
+
+  JunctionHint: array[0..11] of String =
+    ('User-assigned name of junction',
+     'X coordinate of junction on study area map',
+     'Y coordinate of junction on study area map',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Click to specify any external inflows received at the junction',
+     'Click to specify any pollutant removal supplied at the junction',
+     'Elevation of junction''s invert',
+     'Maximum water depth (i.e., distance from invert to ground surface ' +
+     'or 0 to use distance from invert to top of highest connecting link)',
+     'Initial water depth in junction',
+     'Depth in excess of maximum depth before flooding occurs',
+     'Area of ponded water when flooded');
+
+  OutfallHint: array[0..16] of String =
+    ('User-assigned name of outfall',
+     'X coordinate of outfall on study area map',
+     'Y coordinate of outfall on study area map',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Click to specify any external inflows received at the outfall',
+     'Click to specify any pollutant removal supplied at the outfall',
+     'Elevation of outfall''s invert',
+     'Select YES if outfall contains a tide gate to prevent backflow',
+     'Subcatchment that outflow is routed onto (leave blank if not applicable)',
+     'Type of outfall boundary condition',
+     '',
+     'Water elevation for a FIXED type of boundary condition',
+     '',
+     'Name of tidal curve used for a TIDAL boundary condition ' +
+     '(after specifing a curve, you can double-click to edit it)',
+     '',
+     'Name of time series for a TIMESERIES boundary condition ' +
+     '(after specifing a time series, you can double-click to edit it)'
+    );
+
+  DividerHint: array[0..21] of String =
+    ('User-assigned name of divider',
+     'X coordinate of divider on study area map',
+     'Y coordinate of divider on study area map',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Click to specify any external inflows received at the divider',
+     'Click to specify any pollutant removal supplied at the divider',
+     'Elevation of the divider''s invert',
+     'Maximum water depth (i.e., distance from invert to ground surface ' +
+     'or 0 to use distance from invert to top of highest connecting link)',
+     'Initial water depth at the divider node',
+     'Depth in excess of maximum depth before flooding occurs',
+     'Area of ponded water when flooded',
+     'Name of link which receives the diverted flow',
+     'Type of flow divider',
+     '',
+     'Cutoff flow value used for a CUTOFF divider (flow units)',
+     '',
+     'Name of diversion curve used with a TABULAR divider ' +
+     '(after specifing a curve, you can double-click to edit it)',
+     '',
+     'Minimum flow at which diversion begins for a WEIR divider (flow units)',
+     'Depth at maximum flow for a WEIR divider',
+     'Discharge coefficient for a WEIR divider'
+    );
+
+  StorageHint: array[0..13] of String =
+    ('User-assigned name of storage unit',
+     'X coordinate of storage unit on study area map',
+     'Y coordinate of storage unit on study area map',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Click to specify any external inflows received at the storage unit',
+     'Click to specify any pollutant removal supplied at the storage unit',
+     'Elevation of the bottom of the storage unit',
+     'Maximum depth of the storage unit',
+     'Initial depth of water in the storage unit',
+     'Depth in excess of maximum depth before flooding occurs',
+     'Fraction of evaporation rate realized ' +
+     '(e.g., enter 1 for full evaporation or 0 for no evaporation)',
+     'Click to provide soil properties that determine seepage loss ' +
+     'through the bottom and sloped sides of the storage unit',
+     'Click to specify the shape of the unit by relating pool surface area ' +
+     'to water level'
+    );
+
+  ConduitHint: array[0..19] of String =
+    ('User-assigned name of Conduit',
+     'Name of node on the inlet end of conduit ',
+     'Name of node on the outlet end of conduit ',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Click to edit the conduit''s cross section geometry',
+     'Maximum depth of cross section',
+     'Conduit length',
+     'Manning''s roughness coefficient',
+     'Height of conduit invert above node invert at inlet end',
+     'Height of conduit invert above node invert at outlet end',
+     'Initial flow in the conduit (flow units)',
+     'Maximum flow allowed - use 0 if not applicable',
+     'Coeff. for energy losses at the entrance of the conduit',
+     'Coeff. for energy losses at the exit of the conduit',
+     'Coeff. for energy losses along the length of the conduit',
+     'Rate of seepage loss into surrounding soil',
+     'Select YES if a flap gate prevents reverse flow through conduit',
+     'Click to select a Culvert Type code (if applicable)',
+     'Click to add/edit inlets.'
+    );
+
+  PumpHint: array[0..8] of String =
+    ('User-assigned name of pump',
+     'Name of node on the inlet end of pump',
+     'Name of node on the outlet end of pump',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Name of pump curve (or * for ideal pump). ' +
+     'After specifing a curve, you can double-click to edit it)',
+     'Initial status of the pump (ON or OFF)',
+     'Depth at inlet node when pump turns on',
+     'Depth at inlet node when pump turns off'
+    );
+
+  OrificeHint: array[0..12] of String =
+    ('User-assigned name of orifice',
+     'Name of node on the inlet end of orifice',
+     'Name of node on the outlet end of orifice',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Type of orifice',
+     'Orifice shape',
+     'Height of orifice opening when fully open',
+     'Width of orifice opening when fully opened',
+     'Height of bottom of orifice above invert of inlet node',
+     'Discharge coefficient (unitless)',
+     'Select YES if orifice contains a flap gate to prevent backflow',
+     'Time to open/close a gated orifice (hrs)'
+    );
+
+  WeirHint: array[0..18] of String =
+    ('User-assigned name of weir',
+     'Name of node on the inlet end of weir',
+     'Name of node on the outlet end of weir',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Type of weir',
+     'Vertical height of weir opening',
+     'Horizontal length of weir crest (or crown for V-NOTCH weir)',
+     'Slope (width-to-height) of TRAPEZOIDAL weir side walls',
+     'Height of bottom of weir opening from invert of inlet node',
+     'Discharge coefficient for central portion of weir',
+     'Select YES if weir contains a flap gate to prevent backflow',
+     'Number of end contractions',
+     'Discharge coefficient for flow through the triangular ends of a TRAPEZOIDAL weir',
+     'Select YES if weir can surcharge',
+     'Optional name of curve that relates discharge coefficient to head' +
+     ' (double-click to edit the curve)',
+     'The following properties apply only to ROADWAY weirs.',
+     'Width of road lanes and shoulders',
+     'Type of road surface'
+    );
+
+  OutletHint: array[0..12] of String =
+    ('User-assigned name of outlet',
+     'Name of node on the inlet end of outlet',
+     'Name of node on the outlet end of outlet',
+     'Optional comment or description',
+     'Optional category or classification',
+     'Height of outlet opening above inlet node invert',
+     'Select YES if outlet contains a flap gate to prevent backflow',
+     'Method of defining flow as a function of either freeboard depth ' +
+     'or head across the outlet',
+     '',
+     'A-value in expression Outflow = A*y^B for y (= depth or head) in ',
+     'B-value in expression Outflow = A*y^B for y (= depth or head) in ',
+     '',
+     'Name of rating curve that relates outflow to either depth or head ' +
+     '(after specifing a curve, you can double-click to edit it)'
+    );
+
+  LabelHint: array[0..4] of String =
+    ('Text of the label',
+     'X coordinate of upper left corner of the label on the map',
+     'Y coordinate of upper left corner of the label on the map',
+     'Name of a node or subcatchment to which the label is anchored ' +
+     'when map is zoomed (optional)',
+     'Click to edit the label''s font'
+    );

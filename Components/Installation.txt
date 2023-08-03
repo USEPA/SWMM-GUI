@@ -1,0 +1,56 @@
+Directions for Installing the EPA Custom Components into Delphi 10
+==================================================================
+
+This file explains how to install the EPA custom components into Delphi 10
+so that both 32-bit and 64-bit versions of SWMM 5.2 can be built.
+
+If the EPA components were previously installed to Delphi's component palette
+we recommend that they first be removed before executing these instructions
+(from Delphi's main menu select Component | Install Packages, then select EPA
+Components from the list of Design Packages and click the Remove button).
+
+1. Unzip the Components.zip file to a new directory named Epa under the
+   directory where you normally store other component packages.
+
+2. Launch Delphi and open Epa.dproj from the newly created EPA directory.
+
+3. From the Projects window select Windows 32-bit as the Target Platform
+   (expand the Target Platforms node, right-click on Windows 32-bit and
+   select Activate).
+
+4. Select Project | Options from the main menu. In the Options dialog that
+   appears select Delphi Compiler from the left panel. Then in the right panel,
+   for the "Package output directory" option click the ellipsis and create a
+   new directory named Win32 under the Epa directory. Do the same for the
+   "Unit output directory" option.
+
+5. Build the 32-bit component package by selecting Project | Build Epa from
+   the main menu bar.
+
+6. Select Windows 64-bit as the Target Platform from the Projects window.
+
+7. Repeat Step 4 for the 64-bit target but name the new output directory Win64.
+
+8. Build the 64-bit component package by selecting Project | Build Epa from
+   the main menu bar.
+
+9. Install the component package to Delphi's component palette by:
+   a. selecting Component | Install Packages from the main menu.
+   b. A window with a list of installed packages will appear - click the Add button.
+   c. In the file selection dialog that appears navigate to the Epa\Win32 directory
+      and select the "epa.bpl" file. 
+   d. The EPA Components package will now appear on the list of installed packages.
+   e. Click the OK button to complete the installation.
+
+<< THE NEXT STEPS ARE VERY IMPORTANT>>
+
+10. Select Tools | Options from the Delphi IDE main menu bar and in the left panel of
+    the Options form that appears select Language | Delphi | Library.
+
+11. In the right panel of the form set the Selected Platform to "Windows 32-bit".
+
+12. Click the ellipsis button next to Library Path and add the EPA components folder
+    to the list.
+
+13. Then set the Selected Platform to "Windows 64-bit" and again add the EPA
+    components folder to the Library Path.

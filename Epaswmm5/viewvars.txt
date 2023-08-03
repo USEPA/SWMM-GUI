@@ -1,0 +1,435 @@
+{-------------------------------------------------------------------}
+{                    Unit:    Viewvars.txt                          }
+{                    Project: EPA SWMM                              }
+{                    Version: 5.2                                   }
+{                    Date:    07/11/23       (5.2.4)                }
+{                    Author:  L. Rossman                            }
+{                                                                   }
+{  Definition of view variables (map themes) used with EPA SWMM.    }
+{  This file is $Included into the Uglobals.pas unit.               }
+{-------------------------------------------------------------------}
+
+const
+
+  MAXINTERVALS = 4;  //Max. color scale interval index
+  MapObjectName: array[0..2] of PChar = ('Subcatchments','Nodes','Links');
+
+//-----------------------
+// Subcatchment variables
+//-----------------------
+  AREA            = 1;  //Input Data
+  WIDTH           = 2;
+  SUBCATCHSLOPE   = 3;
+  IMPERVIOUSNESS  = 4;
+  LID_USAGE       = 5;
+
+  TOTAL_PRECIP    = 6;  //Summary Report
+  TOTAL_EVAP      = 7;
+  TOTAL_INFIL     = 8;
+  TOTAL_RUNOFF    = 9;
+  PEAK_RUNOFF     = 10;
+  RUNOFF_COEFF    = 11;
+
+  RAINFALL        = 12; //Time Series Output
+  SNOWDEPTH       = 13;
+  EVAP            = 14;
+  INFIL           = 15;
+  RUNOFF          = 16;
+  GW_FLOW         = 17;
+  GW_ELEV         = 18;
+  GW_MOIST        = 19;
+  SUBCATCHQUAL    = 20;
+
+  SUBCATCHVIEWS   = 20; //Max. subcatchment display variable index
+  SUBCATCHRPTVAR1 = 6;  //Index of 1st report file variable
+  SUBCATCHOUTVAR1 = 12; //Index of 1st output file variable
+
+//-----------------
+// Node variables
+//-----------------
+  INVERT       = 1;   //Input Data
+
+  MAX_DEPTH    = 2;   //Summary Report
+  MAX_HGL      = 3;
+  MAX_LATFLOW  = 4;
+  TOT_LATFLOW  = 5;
+  MAX_FLOODING = 6;
+  TOT_FLOODING = 7;
+  HRS_FLOODED  = 8;
+
+  NODEDEPTH   = 9;   //Time Series Output
+  HEAD        = 10;
+  VOLUME      = 11;
+  LATFLOW     = 12;
+  INFLOW      = 13;
+  OVERFLOW    = 14;
+  NODEQUAL    = 15;
+
+  NODEVIEWS   = 15;   //Max. node display variable index
+  NODERPTVAR1 = 2;    //Index of 1st report file variable
+  NODEOUTVAR1 = 9;    //Index of 1st output file variable
+
+//--------------------
+// Link view variables
+//--------------------
+  DIAMETER    = 1;   //Input Data
+  ROUGHNESS   = 2;
+  LINKSLOPE   = 3;
+
+  MAX_FLOW    = 4;   //Summary Report
+  MAX_VELOC   = 5;
+  MAX_FULL    = 6;
+  HRS_SURCH   = 7;
+  HRS_CAP_LTD = 8;
+
+  FLOW        = 9;   //Time Series Output
+  LINKDEPTH   = 10;
+  VELOCITY    = 11;
+  LINKVOLUME  = 12;
+  CAPACITY    = 13;
+  LINKQUAL    = 14;
+
+  LINKVIEWS   = 14;  //Max. link display variable index
+  LINKRPTVAR1 = 4;   //Index of 1st report file variable
+  LINKOUTVAR1 = 9;   //Index of 1st output file variable
+
+//----------------------
+// System view variables
+//----------------------
+  SYS_TEMPERATURE = 0;
+  SYS_RAINFALL    = 1;
+  SYS_SNOWDEPTH   = 2;
+  SYS_INFIL       = 3;
+  SYS_RUNOFF      = 4;
+  SYS_DWFLOW      = 5;
+  SYS_GWFLOW      = 6;
+  SYS_IIFLOW      = 7;
+  SYS_EXFLOW      = 8;
+  SYS_INFLOW      = 9;
+  SYS_FLOODING    = 10;
+  SYS_OUTFLOW     = 11;
+  SYS_STORAGE     = 12;
+  SYS_EVAP        = 13;
+  SYS_PET         = 14;
+  SYSVIEWS        = 14;
+  SYSOUTVAR1      = 0;
+
+  SysViewNames: array[0..SYSVIEWS] of PChar =
+    ('Temperature', 'Precipitation', 'Snow Depth', 'Infiltration', 'Runoff',
+     'DW Inflow', 'GW Inflow', 'I&I Inflow', 'Direct Inflow', 'Total Inflow',
+     'Flooding', 'Outflow', 'Storage', 'Evaporation', 'PET');
+
+type
+
+//-----------------------------------------
+// View variable (visual theme) information
+//-----------------------------------------
+  TViewVariable = record
+    Name        : String;
+    SourceIndex : Integer;
+    DefIntervals: array[1..MAXINTERVALS] of Single;
+  end;
+  TVariableUnits = record
+    Units       : String;
+    Digits      : Integer;
+  end;
+
+const
+
+//Subcatch view variables
+//  Name         = name of variable
+//  SourceIndex  = for input variables, index in Data[] array;
+//                 for computed variables, order in which written
+//                 by solver to output file
+//  DefIntervals = default legend intervals (# intervals =
+//                 MAXINTERVALS constant defined in Uglobals.pas)
+
+  SubcatchVariable: array[0..SUBCATCHQUAL] of TViewVariable =
+    (
+     (Name: 'None';
+      SourceIndex: -1;
+      DefIntervals: (0,0,0,0)),
+
+     (Name: 'Area';
+      SourceIndex: SUBCATCH_AREA_INDEX;    //7;
+      DefIntervals: (25,50,75,100)),
+
+     (Name: 'Width';
+      SourceIndex: SUBCATCH_WIDTH_INDEX;   //9;
+      DefIntervals: (25,50,75,100)),
+
+     (Name: 'Slope';
+      SourceIndex: SUBCATCH_SLOPE_INDEX;   //10;
+      DefIntervals: (0.5,1,5,10)),
+
+     (Name: 'Imperviousness';
+      SourceIndex: SUBCATCH_IMPERV_INDEX;  //11
+      DefIntervals: (20,40,60,80)),
+
+      (Name: 'LID Usage';
+       SourceIndex: SUBCATCH_LID_INDEX;    //21
+       DefIntervals: (0.00001, 25, 50, 75)),
+//-----------------------------------------
+      (Name: 'Total Precip';
+       SourceIndex: 1;
+       DefIntervals: (0, 0, 0, 0)),
+
+      (Name: 'Total Evap';
+       SourceIndex: 3;
+       DefIntervals: (0, 0, 0, 0)),
+
+      (Name: 'Total Infil';
+       SourceIndex: 4;
+       DefIntervals: (0, 0, 0, 0)),
+
+      (Name: 'Total Runoff';
+       SourceIndex: 7;
+       DefIntervals: (0, 0, 0, 0)),
+
+      (Name: 'Peak Runoff';
+       SourceIndex: 9;
+       DefIntervals: (0, 0, 0, 0)),
+
+      (Name: 'Runoff Coeff';
+       SourceIndex: 10;
+       DefIntervals: (0.2, 0.4, 0.6, 0.8)),
+ //----------------------------------------
+     (Name: 'Precipitation';
+      SourceIndex: 0;
+      DefIntervals: (0.01,0.05,0.1,0.5)),
+
+     (Name: 'Snow Depth';
+      SourceIndex: 1;
+      DefIntervals: (0.5, 1.0, 3.0, 6.0)),
+
+     (Name: 'Evaporation';
+      SourceIndex: 2;
+      DefIntervals: (0.01,0.05,0.1,0.5)),
+
+     (Name: 'Infiltration';
+      SourceIndex: 3;
+      DefIntervals: (0.01,0.05,0.1,0.5)),
+
+     (Name: 'Runoff';
+      SourceIndex: 4;
+      DefIntervals:(0.01,0.05,0.1,0.5)),
+
+     (Name: 'GW Flow';
+      SourceIndex: 5;
+      DefIntervals:(0.01,0.05,0.1,0.5)),
+
+     (Name: 'GW Elev.';
+      SourceIndex: 6;
+      DefIntervals:(25,50,75,100)),
+
+     (Name: 'Soil Moisture';
+      SourceIndex: 7;
+      DefIntervals:(0.1,0.2,0.3,0.4)),
+
+     (Name: 'Washoff';
+      SourceIndex: 8;
+      DefIntervals: (0.25,0.5,0.75,1.0))
+    );
+
+//Node view variables
+//  Name         = name of variable
+//  SourceIndex  = for input variables, index in Data[] array;
+//                 for computed variables, order in which written
+//                 by solver to output file
+//  DefIntervals = default legend intervals (# intervals =
+//                 MAXINTERVALS constant defined in Uglobals.pas)
+  NodeVariable: array[0..NODEQUAL] of TViewVariable =
+    (
+     (Name: 'None';
+      SourceIndex: -1;
+      DefIntervals: (0,0,0,0)),
+
+     (Name: 'Invert';
+      SourceIndex: NODE_INVERT_INDEX;   //6;
+      DefIntervals: (25,50,75,100)),
+ //---------------------------------------
+     (Name: 'Max Depth';
+      SourceIndex: 3;
+      DefIntervals: (0,0,0,0)),
+
+     (Name: 'Max HGL';
+      SourceIndex: 4;
+      DefIntervals: (0,0,0,0)),
+
+     (Name: 'Max Lat Inflow';
+      SourceIndex: 2;
+      DefIntervals: (0,0,0,0)),
+
+     (Name: 'Lat Inflow Vol';
+      SourceIndex: 6;
+      DefIntervals: (0,0,0,0)),
+
+     (Name: 'Max Flooding';
+      SourceIndex: 2;
+      DefIntervals: (0,0,0,0)),
+
+     (Name: 'Flood Volume';
+      SourceIndex: 5;
+      DefIntervals: (0,0,0,0)),
+
+     (Name: 'Hrs Flooded';
+      SourceIndex: 1;
+      DefIntervals: (0,0,0,0)),
+//---------------------------------------
+     (Name: 'Depth';
+      SourceIndex: 0;
+      DefIntervals: (1, 5, 10, 20)),
+
+     (Name: 'Head';
+      SourceIndex: 1;
+      DefIntervals:(25,50,75,100)),
+
+     (Name: 'Volume';
+      SourceIndex: 2;
+      DefIntervals:(100,1000,10000,100000)),
+
+     (Name: 'Lateral Inflow';
+      SourceIndex: 3;
+      DefIntervals: (25,50,75,100)),
+
+     (Name: 'Total Inflow';
+      SourceIndex: 4;
+      DefIntervals: (25,50,75,100)),
+
+     (Name: 'Flooding';
+      SourceIndex: 5;
+      DefIntervals: (25,50,75,100)),
+
+     (Name: 'Quality';
+      SourceIndex: 6;
+      DefIntervals: (0.25,0.5,0.75,1.0))
+    );
+
+//Link view variables -- see notes above for Node variables
+  LinkVariable: array[0..LINKQUAL] of TViewVariable =
+    (
+     (Name:'None';
+      SourceIndex:-1;
+      DefIntervals:(0,0,0,0)),
+
+     (Name:'Max. Depth';
+      SourceIndex: CONDUIT_GEOM1_INDEX;   //6;
+      DefIntervals:(0.5, 1.0, 2.0, 4.0)),
+
+     (Name:'Roughness';
+      SourceIndex: CONDUIT_ROUGHNESS_INDEX;   //11;
+      DefIntervals:(0.001, 0.005, 0.01, 0.1)),
+
+     (Name:'Slope';
+      SourceIndex:  CONDUIT_SLOPE_INDEX;     //120;
+      DefIntervals:(0.0, 1, 5, 10)),
+//-----------------------------------------
+     (Name:'Max Flow';
+      SourceIndex:  2;
+      DefIntervals:(0, 0, 0, 0)),
+
+     (Name:'Max Velocity';
+      SourceIndex:  5;
+      DefIntervals:(0, 0, 0, 0)),
+
+     (Name:'Max Capacity';
+      SourceIndex:  7;
+      DefIntervals:(0.2, 0.4, 0.6, 0.8)),
+
+     (Name:'Hrs Surcharged';
+      SourceIndex:  1;
+      DefIntervals:(0, 0, 0, 0)),
+
+     (Name:'Hrs Limiting';
+      SourceIndex:  5;
+      DefIntervals:(0, 0, 0, 0)),
+//-----------------------------------------
+     (Name:'Flow';
+      SourceIndex: 0;
+      DefIntervals:(25,50,75,100)),
+
+     (Name:'Depth';
+      SourceIndex: 1;
+      DefIntervals:(0.5, 1.0, 2.0, 4.0)),
+
+     (Name:'Velocity';
+      SourceIndex: 2;
+      DefIntervals:(0.01,0.1,1.0,2.0)),
+
+     (Name:'Volume';
+      SourceIndex: 3;
+      DefIntervals:(100,1000,10000,100000)),
+
+     (Name:'Capacity';
+      SourceIndex: 4;
+      DefIntervals:(0.25, 0.50, 0.75, 1.0)),
+
+     (Name:'Quality';
+      SourceIndex: 5;
+      DefIntervals:(0.25,0.5,0.75,1.0))
+    );
+
+  BaseSubcatchUnits: array[0..SUBCATCHVIEWS, TUnitSystem] of PChar =
+                 (('',''),                // No View
+                  ('ac','ha'),            // Area
+                  ('ft','m'),             // Width
+                  ('%','%'),              // Slope
+                  ('%','%'),              // Imperviousness
+                  ('%','%'),              // LID Usage
+
+                  ('in','mm'),            // Total Precip
+                  ('in','mm'),            // Total Evap
+                  ('in','mm'),            // Total Infil
+                  ('in','mm'),            // Total Runoff
+                  ('in/hr','mm/hr'),      // Peak Runoff
+                  ('',''),                // Runoff Coeff
+
+                  ('in/hr','mm/hr'),      // Rainfall
+                  ('in', 'mm'),           // Snow Depth
+                  ('in/day','mm/day'),    // Evap Rate
+                  ('in/hr','mm/hr'),      // Infil Rate
+                  ('CFS','CMS'),          // Runoff
+                  ('CFS','CMS'),          // GW Flow
+                  ('ft','m'),             // GW Elev
+                  ('',''),                // Soil Moisture
+                  ('mg/L','mg/L'));       // Washoff
+
+  BaseNodeUnits: array[0..NODEVIEWS, TUnitSystem] of PChar =
+                 (('',''),                // No View
+                  ('ft','m'),             // Elev.
+
+                  ('ft','m'),             // Max Depth
+                  ('ft','m'),             // Max HGL
+                  ('CFS','CMS'),          // Max Lateral Flow
+                  ('Mgal','Mltr'),        // Total Lateral Flow
+                  ('CFS','CMS'),          // Max Flooding
+                  ('Mgal','Mltr'),        // Total Flooding
+                  ('',''),                // Hours Flooded
+
+                  ('ft','m'),             // Depth
+                  ('ft','m'),             // Head
+                  ('ft'#179,'m'#179),     // Volume
+                  ('CFS','CMS'),          // Lateral Inflow
+                  ('CFS','CMS'),          // Total Inflow
+                  ('CFS','CMS'),          // Overflow
+                  ('mg/L','mg/L'));       // Quality
+
+  BaseLinkUnits: array[0..LINKVIEWS,TUnitSystem] of PChar =
+                 (('',''),                // No View
+                  ('ft','m'),             // Max. Depth
+                  ('',''),                // Manning N
+                  ('%','%'),              // Slope
+
+                  ('CFS','CMS'),          // Max Flow
+                  ('fps','m/s'),          // Max Velocity
+                  ('',''),                // Max Full
+                  ('',''),                // Hours Surcharged
+                  ('',''),                // Hours Capacity Limited
+
+                  ('CFS','CMS'),          // Flow
+                  ('ft','m'),             // Depth
+                  ('fps','m/s'),          // Velocity
+                  ('ft'#179,'m'#179),     // Volume.
+                  ('',''),                // Fraction Full
+                  ('mg/L','mg/L'));       // Quality
+
