@@ -1,0 +1,637 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>EPA SWMM GUI: Inlet Analysis with SWMM</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="../../toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">EPA SWMM GUI
+   &#160;<span id="projectnumber">5.3.0</span>
+   </div>
+   <div id="projectbrief">Tutorials and User Guide</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('db/d4a/md_inlet-tutorial_2inlet-tutorial.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Inlet Analysis with SWMM</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md32"></a> </p>
+<h1><a class="anchor" id="autotoc_md33"></a>
+Introduction</h1>
+<p>Storm drain inlets are structures that convey runoff from street pavements into below ground storm sewers. Inlet type, sizing and spacing are normally chosen to meet limits on the spread and depth of water across roadways as set by local drainage agencies to maintain public safety. This tutorial demonstrates how SWMM can be used to model street drainage using inlets.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><img src="../../grate.zoom54.gif" alt="" class="inline" title="Grate"/>      </td><td class="markdownTableBodyNone"><img src="../../curbopening.zoom108.gif" alt="" class="inline" title="CurbOpening"/>      </td></tr>
+</table>
+<p>To analyze street drainage with SWMM a site is represented as a dual drainage system consisting of both street conduits along the ground surface and sewer conduits below it. An inlet structure will divert some portion of the street flow it sees into a designated node of the sewer system with the rest being bypassed to downstream streets. When an inlet's sewer node reaches its full depth any excess flow that would cause it to flood is sent back through the inlet and into the street.</p>
+<div class="image">
+<img src="../../dualdrainage.png" alt=""/>
+<div class="caption">
+Dual Drainage</div></div>
+    <p>To view the rest of this tutorial use the button to move to the next topic, the button to retunr to the previous topic, and the button to return to the start of the tutorial.</p>
+<p>[!note] This tutorial assumes you are familiar with the basics of using the SWMM 5 user interface to develop a simple drainage system. If need be, please consult the SWMM 5 Basic Tutorial before proceeding further.</p>
+<h2><a class="anchor" id="autotoc_md34"></a>
+Inlet Types</h2>
+<p>SWMM supports the following types of inlets whose  flow capture efficiency is computed using the methods described in the U.S. Federal Highway Administration <a href="https://www.fhwa.dot.gov/engineering/hydraulics/pubs/10009/10009.pdf">Urban Drainage Design Manual</a> (HEC-22).</p>
+<div class="image">
+<img src="../../inlettypes.zoom57.gif" alt=""/>
+<div class="caption">
+Inlet Types</div></div>
+    <table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">An additional <b>Custom</b> type of inlet is also available. Its <br  />
+ capture efficiency is described by either a user-supplied <br  />
+ Diversion curve (captured flow v. approach flow) or Rating <br  />
+ curve (captured flow v. flow depth).   </td><td class="markdownTableBodyNone"><img src="../../custominlet2.zoom80.gif" alt="" class="inline" title="Custom Inlet"/>      </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md35"></a>
+Inlet Concepts</h2>
+<p>Some key concepts to keep in mind when modeling inlets with SWMM  are:</p>
+<ul>
+<li>Inlet objects are assigned to conduit links that represent streets or open channels.</li>
+<li>Because of the methods used to compute inlet flow capture:<ul>
+<li>Curb and gutter type inlets can only be used in conduits with a designated Street cross-section.</li>
+<li>Drop inlets can only be used in conduits with a rectangular or trapezoidal cross-section.</li>
+<li>Custom inlets can be placed in any type of conduit.</li>
+</ul>
+</li>
+<li>Each inlet is assigned a node (typically belonging to a sewer line) that receives the flow captured by the inlet.</li>
+<li>Multiple inlets of the same design and receptor node can be assigned to a conduit (as pairs for two-sided streets). For on-grade placement the flow captured by each inlet is determined sequentially, so that the approach flow to the next inlet in line is the bypass flow from the inlet before it.</li>
+<li>Users can stipulate whether an inlet operates on-grade, on-sag or have SWMM decide based on street layout and topography. On-grade means the inlet is located on a continuous grade. On-sag means the inlet is located at a sag or sump point where all adjacent conduits slope towards the inlet leaving no place for water to flow except into the inlet.</li>
+<li>Flow capture for on-grade inlets is a function of the approach flow seen by the inlet while for on-sag inlets it is a function of the depth of water at the sag point node.</li>
+<li>Inlets can also have a degree of clogging and a flow capture restriction assigned to them.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md36"></a>
+Inlet Analysis Workflow</h2>
+<p>In general, running an inlet analysis with SWMM entails the following steps:</p>
+<ol type="1">
+<li>Layout both the street and sewer networks.</li>
+<li>Assign subcatchment runoff and user-defined inflows to individual street nodes.</li>
+<li>Create a collection of Street cross-sections.</li>
+<li>Assign specific Street cross-sections to individual street conduits.</li>
+<li>Create a collection of Inlet designs.</li>
+<li>Assign specific Inlet designs to selected streets.</li>
+<li>Set appropriate analysis options and run a simulation.</li>
+<li>Review the simulation results to see if  flow spread and depth values are acceptable.</li>
+</ol>
+<p>These steps will now be applied to a simple street and sewer drainage system.</p>
+<h1><a class="anchor" id="autotoc_md37"></a>
+Example Project</h1>
+<p>A simple example will be used to illustrate how street drainage analysis is made with SWMM. The project's layout is shown below with the node and link ID names displayed.</p>
+<div class="image">
+<img src="../../finalmodel.png" alt=""/>
+<div class="caption">
+Final Model</div></div>
+    <p>It contains three street segments with inlets placed in two of them. These divert captured flow into a two-pipe sewer line. External runoff inflows are applied at each end of the street system. Node 4 represents a sag (low elevation) point where any street flow not captured by the inlets will cause water to pond atop the street. Each street is two-sided with each side 20 feet wide with a cross slope of 2%, a 6-inch high curb and a roughness coefficient of 0.016. Each sewer pipe is circular with a 1-foot diameter and 0.01 roughness. The streets and sewers each have a 1% slope and are 200 feet long. Street1 contains a 2 ft x 2 ft grate inlet on each side while a 2 ft long by 6 inches high curb opening is located on each side of Street 3.</p>
+<p>We wish to determine the maximum spread and depth of water on the streets when both inflows are from a triangular 6-hour hydrograph with peak flow of 0.6 cfs at 3 hours.</p>
+<h2><a class="anchor" id="step_1"></a>
+Step 1 - Lay Out the Network</h2>
+<p>The first step is to draw the nodes and links that comprise the drainage network using SWMM's visual editing tools. The layout of both the streets and sewer line is shown below with the invert elevation of each node displayed below it.</p>
+<div class="image">
+<img src="../../networklayout.png" alt=""/>
+<div class="caption">
+Network Layout</div></div>
+    <p>Next edit each node's properties, giving it the ID name and invert elevation shown on the diagram. Sewer nodes 5 and 6 have their maximum depths set to 4 feet. Then edit each link, giving it the ID name shown on the diagram and setting its length to 200 feet. For Sewer1 and Sewer2 set their diameters to 1 foot and their roughness to 0.01. At this point there is no need to edit additional street properties - this will be done subsequently.</p>
+<p>[!note] There is no need to explicitly connect sewer nodes to street nodes with a physical link &ndash; SWMM's Inlet object will create a virtual connection between the two systems. There is also no requirement that the rim elevation of sewer nodes match either the invert or top elevation of inlet street nodes.</p>
+<h2><a class="anchor" id="autotoc_md38"></a>
+Step 2 - Add External Inflows</h2>
+<p>A street drainage system will typically receive inflows from computed subcatchment runoff or from user-defined  time series. These inflows need to be assigned to their respective locations within the street layout. For subcatchment runoff this involves setting the subcatchment's <b>Outlet</b> property to the appropriate street node ID. For user-defined inflows, a user-supplied flow time series is assigned directly to the desired node's <b>Inflows</b> property. In addition, the sewer sub-system may have direct inflows associated with its nodes, such as from Rainfall Dependent Inflow/Infiltration (RDII) or sanitary flows (for combined sewer systems).</p>
+<p>Our example project does not include subcatchment areas with their associated rainfall/runoff hydrology nor any direct sewer inflow. Instead it uses an external inflow time series assigned to street nodes 1 and 3. To do this, first create a Time Series object named <b>TS1</b> with the following data:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Hour</b>   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">6    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Flow (cfs)</b>   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">0.2   </td><td class="markdownTableBodyNone">0.4   </td><td class="markdownTableBodyNone">0.6   </td><td class="markdownTableBodyNone">0.4   </td><td class="markdownTableBodyNone">0.2   </td><td class="markdownTableBodyNone">0   </td></tr>
+</table>
+<p>Then edit the <b>Inflows</b> property of nodes 1 and 3, assigning <b>TS1</b> as a Direct Flow inflow for each.</p>
+<h2><a class="anchor" id="step_3"></a>
+Step 3 - Create Street Cross-Sections</h2>
+<p>We next specify the cross-section shape and roughness of our street conduits. SWMM includes a special Street cross-section object that is consistent with the shape used by the HEC-22 inlet procedures. Similar to the way that Transects are used with irregular channels, a collection of Street cross-sections can be created to be re-used across multiple streets.</p>
+<p>Our example project utilizes the same cross-section for all of its streets. To create it:</p>
+<ol type="1">
+<li>Select the Streets category from the Project Browser.</li>
+<li>Click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button to bring up The Street Section Editor.</li>
+<li>Enter the ID name and dimensions shown in the screen shot below.</li>
+</ol>
+<div class="image">
+<img src="../../streetsectioneditor.zoom89.gif" alt=""/>
+<div class="caption">
+StreetSectionEditor</div></div>
+    <p>These dimensions refer to one half of the street, from its crown to its curb (or backing if present). Because our streets are two-sided, the same dimensions apply to both halves.</p>
+<h2><a class="anchor" id="autotoc_md39"></a>
+Step 4 - Assign Street Cross-Sections</h2>
+<p>Now that we have defined the dimensions and roughness of a Street cross-section we can apply it to the streets in our model. To do so:</p>
+<ol type="1">
+<li>Select Street1 and open its Property Editor.</li>
+<li>Select the <b>Shape</b> field and click the ellipsis button (or simply press the Enter key).</li>
+<li>In the Cross-Section Editor that appears, select the <b>Street</b> shape.</li>
+<li>In the Street Section Name combo box, select our only available street cross-section named <b>StreetSect1</b>.</li>
+<li>Repeat these steps for Street2 and Street3.</li>
+</ol>
+<div class="image">
+<img src="../../assignstreetsection.zoom78.gif" alt=""/>
+<div class="caption">
+Assign Street Section</div></div>
+    <p>[!note] If a number of street conduits are clustered or linked together and share the same cross-section then instead of setting their Shape property one at a time SWMM's group editing feature can be used to assign them the desired cross-section all at once.</p>
+<h2><a class="anchor" id="autotoc_md40"></a>
+Step 5 - Create Inlet Designs</h2>
+<p>Next we create a set of inlet designs that can be deployed to the streets in our project:</p>
+<ol type="1">
+<li>Select the Inlets category from the Project Browser.</li>
+<li>Click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button to create a new inlet design.</li>
+<li>Fill In the fields of the Inlet Structure Editor that appears with the design of a grated inlet as shown below:</li>
+</ol>
+<div class="image">
+<img src="../../grateinlet.zoom82.gif" alt=""/>
+</div>
+    <ol start="4">
+<li>
+After accepting the contents of the Inlet Structure Editor, repeat Steps 2 and 3 again to add a curb opening inlet as shown below: </li>
+</ol>
+<div class="image">
+<img src="../../curbopening2.zoom82.gif" alt=""/>
+<div class="caption">
+Curb Opening</div></div>
+    <h2><a class="anchor" id="autotoc_md41"></a>
+Step 6 - Assign Inlet Designs</h2>
+<p>At this point we can assign inlets to our project's streets. The general steps for doing this are:</p>
+<ol type="1">
+<li>Select the street conduit in which to place an inlet and bring up its Property Editor.</li>
+<li>Select the <b>Inlets</b> property and click the ellipsis button (or press Enter).</li>
+<li>In the Inlet Usage Editor that appears select a previously created <b>Inlet Structure</b> to use from the dropdown list.</li>
+<li>Then select the <b>Capture Node</b> property and enter the name of the node that receives the inlet's captured flow (or simply click the node on the Study Area Map).</li>
+<li>Enter values for the other optional usage properties as needed (consult the Inlet Usage Editor topic in SWMM's main Help file to learn more about these).</li>
+</ol>
+<p>This process is depicted visually in the screen shot below.</p>
+<div class="image">
+<img src="../../assigninlets.zoom83.gif" alt=""/>
+<div class="caption">
+Assign Inlets</div></div>
+    <p>For our project we want to place the <b>Grate</b> inlet in Street1 with node 5 as its capture node and the <b>CurbOpening</b> inlet in Street3 with node 6 as its capture node.</p>
+<h2><a class="anchor" id="autotoc_md42"></a>
+Step 7 - Run a Simulation</h2>
+<p>The design of our street drainage system is now complete and ready to be simulated. Before doing so we need to set some analysis options.</p>
+<ol type="1">
+<li>Open the Simulation Options dialog (select the <b>Options</b> category from the Project browser, select the <b>General Options</b> entry and click the &#160;<img src="../../edit.gif" alt="" class="inline"/>     [edit] button).</li>
+<li>On the <b>General</b> page set the <b>Routing Model</b> choice to <b>Dynamic Wave</b>.</li>
+<li>On the <b>Dates</b> page set the <b>End Analysis</b> time to 8 hours.</li>
+<li>On the <b>Time Steps</b> page set the <b>Reporting Step</b> to 5 minutes and the <b>Routing Step</b> to 10 seconds.</li>
+</ol>
+<p>Now run a simulation by clicking the &#160;<img src="../../run.gif" alt="" class="inline"/>     button on the main toolbar or by selecting <b>Project | Run Simulation</b> from the main menu.</p>
+<h2><a class="anchor" id="autotoc_md43"></a>
+Step 8 - View Simulation Results</h2>
+<p>The results of our drainage system analysis can be viewed in several ways:</p>
+<ul>
+<li>Checking the Street Summary Report table for acceptable flow spread and depth.</li>
+<li>Creating time series plots of inlet flow capture.</li>
+<li>Viewing a profile plot of flow depth along a series of streets.</li>
+</ul>
+<p>Each of these will be illustrated next.</p>
+<h3><a class="anchor" id="street_summary"></a>
+Street Summary Report</h3>
+<p>The Street Summary Report for our project can be viewed by selecting <b>Report | Summary</b> from SWMM's main menu and then selecting the <b>Street Flow</b> topic. The report is shown below.</p>
+<div class="image">
+<img src="../../streetresults-a.png" alt=""/>
+<div class="caption">
+Street Results-A</div></div>
+    <p>Aside from showing the maximum flow, spread, and depth of water on each street, it also lists some flow capture statistics for each inlet as well as its backflow frequency (the percent of the time that the inlet's sewer node overflowed). If this analysis were for a minor storm event where water encroachment was not allowed to exceed one lane of roadway (10 feet for our streets), then this design would be acceptable.</p>
+<h3><a class="anchor" id="autotoc_md44"></a>
+Flow Capture Time Series</h3>
+<p>The flow captured by a project's inlets shows up as lateral inflow into the inlet's capture node. Lateral inflow is one of the computed output variables that can be viewed using SWMM's reporting features.  Below is a time series plot of the approach flow seen by the Grate inlet in Street1 as well as the amount of this flow that is captured (i.e., the lateral inflow into node 5):</p>
+<div class="image">
+<img src="../../grateflow.png" alt=""/>
+<div class="caption">
+Grate Flow</div></div>
+    <p>We see that at low flows the inlet's capture efficiency is 100% while at the peak flow it is 84% which matches the number appearing on the Street Summary report.</p>
+<p>Flow capture for the on-sag curb opening inlet depends on the water depth at the sag point node 4. A scatter plot for these two variables (again noting that the lateral inflow to node 6 reflects the inlet's captured flow) looks as follows:</p>
+<div class="image">
+<img src="../../curbopeningflow.zoom93.gif" alt=""/>
+<div class="caption">
+Curb Opening Flow</div></div>
+    <p>The shape of this curve is indicative of weir flow through the inlet which is what HEC-22 uses for flow depths below the height of the curb opening.</p>
+<h3><a class="anchor" id="autotoc_md45"></a>
+Flow Depth Profile Plot</h3>
+<p>Another interesting way to view inlet analysis results is with a profile plot, especially for the sag point at street node 4. Such a plot, for the time of peak flow, is shown below. The partial flow capture of the CurbOpening inlet at node 4 is causing the excess water to back up along Street2 and Street3 as shown by the adverse profiles along these streets.</p>
+<div class="image">
+<img src="../../profileplot2.png" alt=""/>
+<div class="caption">
+Profile Plot 2</div></div>
+    <h2><a class="anchor" id="autotoc_md46"></a>
+Additional Analyses</h2>
+<p>Some additional analyses can be made with our example drainage system to illustrate the following:</p>
+<ul>
+<li>the effect that depressed gutters have on inlet performance</li>
+<li>street flooding caused by surcharged sewers</li>
+<li>using kinematic wave routing to analyze street drainage.</li>
+</ul>
+<p>Before continuing you should save the original example project to disk since it will be modified as each of these items is analyzed.</p>
+<h3><a class="anchor" id="autotoc_md47"></a>
+Depressed Gutters</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Depressed gutters can increase inlet capture (due to <br  />
+ higher cross slope) and reduce pavement spread (due <br  />
+ to the increased volume next to the curb). We will <br  />
+ illustrate this effect by adding a depressed gutter to <br  />
+ the streets in our example project. We do this by <br  />
+ editing the <b>StreetSect1</b> cross section, giving it a 0.167 <br  />
+ foot (2 inch) gutter depression that is 2 feet wide <br  />
+ (refer to <a class="el" href="#step_3">Step 3</a> of the project's workflow on how to <br  />
+ access the Street Section Editor).   </td><td class="markdownTableBodyNone"><img src="../../depressedgutter.jpg" alt="" class="inline" title="Depressed Gutter"/>      </td></tr>
+</table>
+<p>After making this change and re-running the analysis we can compare depressed gutter results to those with no depressed gutter:</p>
+<div class="image">
+<img src="../../example.png" alt=""/>
+<div class="caption">
+Results With No Gutter Depression</div></div>
+    <div class="image">
+<img src="../../example-dg.png" alt=""/>
+<div class="caption">
+Results With Gutter Depression</div></div>
+    <p>Gutter depression has significantly reduced the amount of spread seen by Street2 and Street3. It has also allowed the Grate inlet to completely capture all of the flow in Street1. (Even though Street2 sees no flow from Street1 it still contains some water backed up from the sag node at its downstream end.)</p>
+<h3><a class="anchor" id="autotoc_md48"></a>
+Sewer Backflow</h3>
+<p>When a portion of the sewer system becomes surcharged there is the possibility that flows will be high enough to overflow an inlet's sewer receptor node. When this happens SWMM computes the inlet's net flow capture as the difference between the normal flow capture and the sewer overflow. If this net flow is negative it results in water flowing out of the sewer node into the inlet's street node.</p>
+<p>Our original example drainage system can be modified as follows to illustrate this effect:</p>
+<ol type="1">
+<li>Add a new sewer pipe, Sewer0,  upstream of Sewer1 with its same properties and give its start node an elevation of 98 feet and a maximum depth of 4 feet.</li>
+<li>Add an inflow to the start node of Sewer0 with the same time series as the street inflows but with a scale factor of 3.</li>
+<li>Reduce the diameter of Sewer1 to 0.5 feet.</li>
+<li>Run the analysis.</li>
+</ol>
+<p>These changes cause Sewer1 to reach its flow capacity when system inflow is high enough thus producing an overflow at its upstream node 5. This node receives street flow captured by the Grate inlet in Street1. When the sewer overflow exceeds the captured street flow there is a net addition of flow back onto the street. This behavior is reflected in the following time series graph:</p>
+<div class="image">
+<img src="../../sewerbackflowgraph.png" alt=""/>
+<div class="caption">
+Sewer Backflow Graph</div></div>
+    <p>And here is what the conduit flows and lateral flow exchanges look like at the time of peak system inflow (flow values are shown for links and lateral inflow values are shown next to nodes):</p>
+<div class="image">
+<img src="../../sewerbackflow.png" alt=""/>
+<div class="caption">
+Sewer Backflow</div></div>
+    <p>Although the Grate inlet in Street1 captures 0.5 cfs of street flow, the overflow from its sewer node 5 is large enough to create a net backflow through the inlet of 0.7 cfs. This results in Street2 seeing an increase in flow instead of having its flow reduced by the amount captured by the Grate inlet.</p>
+<h3><a class="anchor" id="autotoc_md49"></a>
+Kinematic Wave Routing</h3>
+<p>All of our previous analyses have been run using SWMM's dynamic wave flow routing option. It is also possible to analyze inlet performance using kinematic wave routing. However, kinematic wave routing is unable to create a backwater effect for excess water that remains on the street at a sag node after its inflow has passed through an inlet. Instead, since the junction node has no outlet conduits, it is treated as if it were an outfall node and any excess water is simply lost from the system (i.e., listed as external outflow in the flow balance appearing in the project's Status Report). This will produce a much different result for the sag point than that obtained using dynamic wave analysis. You can verify this by running the original example project under kinematic wave and comparing its Street Summary report with the one found using dynamic wave analysis.</p>
+<p>This issue can be resolved by replacing sag junction nodes with storage nodes whose maximum depth equals the street's curb height and whose surface area equals the spread (i.e., top width) at a given height times half the length of all of the streets converging on the node. The latter can be expressed with the equation:</p>
+<p class="formulaDsp">
+\[ A = \( \sum \frac{N_{s} L}{2 S_{x}} \) y \]
+</p>
+<p>where the summation is made over all streets that converge on the node in question with \(A\) = storage surface area, \(N_{s}\) = 1 for a one-sided street or 2 for a two-sided street, \(L\) = street length, \(S_{x}\) = street cross slope and \(y\) = storage depth.</p>
+<p>To apply this modification to our original example project:</p>
+<ol type="1">
+<li>Right-click on node 4 and select <b>Convert To | Storage Unit</b> from the pop-up menu that appears</li>
+<li>Bring up the storage unit's Property Editor and set its <b>Max. Depth</b> to 0.5</li>
+<li>Select the <b>Storage Shape</b> property and click the ellipsis button (or hit Enter)</li>
+<li>In the Storage Shape Editor that appears select the <b>Functional</b> shape option and set <b>a0</b> = 0, <b>a1</b> = 20000 and <b>a2</b> = 1. (The value of 20000 is derived from having two converging streets, both two-sided with a length of 200 and a cross slope of 0.02).</li>
+<li>Run the analysis under kinematic wave.</li>
+</ol>
+<p>The resulting Street Summary report, shown below, looks very similar to the <a class="el" href="#street_summary">one found under dynamic wave</a>.</p>
+<div class="image">
+<img src="../../streetresults-d.png" alt=""/>
+<div class="caption">
+Street Results - D</div></div>
+    <h1><a class="anchor" id="autotoc_md50"></a>
+Computational Methods</h1>
+<p>SWMM employs a simple lateral flow adjustment method to exchange street inlet captured flow and sewer overflow between the two sub-systems as diagrammed below.</p>
+<div class="image">
+<img src="../../lateralflowadjustment.png" alt=""/>
+<div class="caption">
+Lateral Flow Adjustment</div></div>
+    <p>When implementing this approach the following actions are taken at each flow routing time step:</p>
+<ol type="1">
+<li>The flow captured at each inlet is computed using current values of street flow rates and flow depths.</li>
+<li>Each inlet’s captured flow is added to the lateral inflow[^1] that enters the inlet’s assigned sewer node and is subtracted from the lateral inflow seen by the downstream node of the inlet’s street conduit.</li>
+<li>Any current overflow (i.e., flooding) that an inlet’s sewer node experiences is added onto the lateral inflow for the inlet’s street node instead of having it leave the system as it normally would. This allows for a two-way flow exchange between the street and sewer once the water level in the sewer node reaches the ground elevation.</li>
+<li>The usual flow routing step normally taken by SWMM is then applied to update system hydraulics to the next point in time.</li>
+</ol>
+<p>By convention, two-sided Street conduits have pairs of identical inlets placed on each side. Inlet flow capture is computed for only one side of the street using half of the street's current flow and is then doubled to determine how much total flow is diverted to the street's sewer node.</p>
+<p>The next set of topics describe the methods used for computing flow capture for the different types of inlets.</p>
+<p>[1] Lateral inflow refers to flow that a node receives from external sources (such as surface runoff, groundwater, rainfall dependent inflow/infiltration, user-supplied values, etc.) and can be either positive for inflow or negative for outflow.</p>
+<h2><a class="anchor" id="autotoc_md51"></a>
+Curb and Gutter Inlets</h2>
+<p>Curb and gutter inlets (grates, curb openings, and slotted inlets) have their flow capture computed using the methods described in the Federal Highway Administration's Urban Drainage Design Manual, otherwise known as HEC-22. As these methods assume a triangular street cross-section (see below), curb and gutter inlets can only be placed in conduits that are assigned SWMM's Street cross-section shape.</p>
+<div class="image">
+<img src="../../streetsections.zoom62.gif" alt=""/>
+<div class="caption">
+Street Sections</div></div>
+    <p>The specific equations HEC-22 uses to compute flow capture depend on whether the inlet is located on a continuous sloping grade or at a sag (or sump) point.</p>
+<h3><a class="anchor" id="autotoc_md52"></a>
+On-Grade Capture</h3>
+<p><b>Grate Inlets</b></p>
+<p>Flow capture for grated inlets located on-grade is computed as follows:</p>
+<p class="formulaDsp">
+\[ Q_{c} = Q \{R_{f} E_{o} + R_{s} (1 - E_{o}) \} \]
+</p>
+<p class="formulaDsp">
+\[ R_{f} = 1 - 0.09 max(0, V - V_{o}) \]
+</p>
+<p class="formulaDsp">
+\[ R_{s} = 1 / (1 + 0.15 V^{1.8} / S_{x} L^{2.3} ) \]
+</p>
+<p>where:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(Q_{c}\)   </td><td class="markdownTableBodyNone">= captured flow (cfs)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(Q\)   </td><td class="markdownTableBodyNone">= approach flow (cfs)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(E_{o}\)   </td><td class="markdownTableBodyNone">= ratio of flow over grate to total flow (depends on grate width)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(R_{f}\)   </td><td class="markdownTableBodyNone">= frontal capture efficiency    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(R_{s}\)   </td><td class="markdownTableBodyNone">= side capture efficiency    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(V\)   </td><td class="markdownTableBodyNone">= velocity of flow over the grate (ft/s)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(V_{o}\)   </td><td class="markdownTableBodyNone">= velocity at which water begins to splash over the inlet (depends on grate length) (ft/s)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(S_{x}\)   </td><td class="markdownTableBodyNone">= street cross slope (ft/ft)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(L\)   </td><td class="markdownTableBodyNone">= grate length (ft)   </td></tr>
+</table>
+<p>More information on determining values for \(E_{o}\) and \(V_{o}\) can be found in the HEC-22 Manual.</p>
+<p><b>Curb Opening Inlets</b></p>
+<p>Flow capture for curb opening inlets placed on-grade is computed as follows:</p>
+<p class="formulaDsp">
+\[ Qc = Q \{1 - (1 - min(1, L/L_{T}))^{1.8} \} \]
+</p>
+<p class="formulaDsp">
+\[ L_{T} = 0.6 Q ^{0.42} S_{L}^{0.3} (n S_{e})^{-0.6} \]
+</p>
+<p class="formulaDsp">
+\[ S_{e} = S_{x} + (a / W) E_o \]
+</p>
+<p>where:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(L\)   </td><td class="markdownTableBodyNone">= length of curb opening (ft)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(L_{T}\)   </td><td class="markdownTableBodyNone">= length at which full capture is achieved (ft)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(S_{L}\)   </td><td class="markdownTableBodyNone">= longitudinal street slope (ft/ft)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(n\)   </td><td class="markdownTableBodyNone">= Manning's roughness coefficient for the street surface    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(a\)   </td><td class="markdownTableBodyNone">= curb depression (ft)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(W\)   </td><td class="markdownTableBodyNone">= depressed gutter width (ft)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(E_{o}\)   </td><td class="markdownTableBodyNone">= ratio of flow over depressed gutter width to total flow   </td></tr>
+</table>
+<p>and \(a\), \(W\) and \(E_{o}\) only apply to composite street sections with depressed gutters.</p>
+<p><b>Combination Inlets</b></p>
+<p>A combination inlet consists of both a grate and curb opening placed together at the same location. Its on-grade flow capture equals that of the grate plus any flow captured by the portion of the curb opening that extends upstream of the grate's length. The latter flow capture is computed first and is subracted from the approach flow used to determine the grate's flow capture.</p>
+<p><b>Slotted Inlets</b></p>
+<p>The flow capture capability of a slotted inlet located on-grade is the same as that of a curb opening inlet of equal length.</p>
+<h3><a class="anchor" id="autotoc_md53"></a>
+On-Sag Capture</h3>
+<p>Flow capture efficiency for an inlet in a sag location depends on the size of the inlet’s opening and the depth of water that collects next to it at the street curb. At low flow depths the inlet acts as a weir with</p>
+<p class="formulaDsp">
+\[ Q_{C} = C_{W} L_{W} d^{1.5} \]
+</p>
+<p>while at higher depths it acts as an orifice with</p>
+<p class="formulaDsp">
+\[ Q_{C} = C_{O} A_{O} \sqrt{2 g d} \]
+</p>
+<p>where:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(Q_{C}\)   </td><td class="markdownTableBodyNone">= captured flow (cfs)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(C_{W}\)   </td><td class="markdownTableBodyNone">= weir coefficient (ft<sup>0.5</sup>/sec)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(C_{O}\)   </td><td class="markdownTableBodyNone">= orifice coefficient    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(g\)   </td><td class="markdownTableBodyNone">= acceleration of gravity (ft/sec<sup>2</sup>)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(L_{W}\)   </td><td class="markdownTableBodyNone">= effective length of inlet (ft)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(A_{O}\)   </td><td class="markdownTableBodyNone">= open area of inlet (ft<sup>2</sup>)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(d\)   </td><td class="markdownTableBodyNone">= effective depth of water seen by the inlet (ft)   </td></tr>
+</table>
+<p>The values of \(C_{W}\) and \(C_{O}\) depend on the type of inlet (grate, curb opening, or slotted inlet).</p>
+<p><b>Grates</b></p>
+<p>For grate inlets the following values are used in the flow capture equations:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(C_{W}\)   </td><td class="markdownTableBodyNone">= \(3.0\)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(C_{O}\)   </td><td class="markdownTableBodyNone">= \(0.67\)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(L_{W}\)   </td><td class="markdownTableBodyNone">= \(L + 2W\)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(d\)   </td><td class="markdownTableBodyNone">= \(d_{i} + (W/2) S_{W}\)   </td></tr>
+</table>
+<p>where \(W\) is the grate's width, \(L\) its length, \(S_{W}\) the gutter slope, and \(d_{i}\) the depth of water at the street's curb. It is assumed that the depth at which weir flow becomes orifice flow is the depth at which the two flows are the same. This results in weir flow for depths \(d\) below \(1.79 A_{O} / L_{W}\) and orifice flow for depths above it.</p>
+<p><b>Curb Openings</b></p>
+<p>For curb opening inlets the following values are used in the flow capture equations:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone" rowspan="2">\(C_{W}\)   </td><td class="markdownTableBodyNone">= \(3.0\) for uniform cross slope or \(L &gt; 12\) ft    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">= \(2.3\) otherwise    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(C_{O}\)   </td><td class="markdownTableBodyNone">= \(0.67\)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone" rowspan="2">\(L_{W}\)   </td><td class="markdownTableBodyNone">= \(L\) for uniform cross slope or \(L &gt; 12\) ft    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">= \(L + 2W\) otherwise    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(d\)   </td><td class="markdownTableBodyNone">= \(d_{i} - (h/2) \sin{\theta}\)   </td></tr>
+</table>
+<p>where \(L\) is the length of the curb opening, \(h\) its height, \(W\) the width of a depressed gutter, \(\theta\)  the angle that the inlet's throat makes with the vertical (0 degrees for a vertical throat, 90 degrees for a horizontal throat), and \(d_{i}\) is the depth of water at the curb.</p>
+<p>Weir flow occurs at effective depths below h while orifice flow occurs at depths greater than \(1.4h\). For depths in between these flow capture is linearly interpolated between the flow capture at these two depths.</p>
+<p><b>Slotted Inlets</b></p>
+<p>For slotted inlets the variables in the flow capture equations are:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(C_{W}\)   </td><td class="markdownTableBodyNone">= \(2.48\)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(C_{O}\)   </td><td class="markdownTableBodyNone">= \(0.8\)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(L_{W}\)   </td><td class="markdownTableBodyNone">= \(L\)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(d\)   </td><td class="markdownTableBodyNone">= \(d_{i}\)   </td></tr>
+</table>
+<p>where L is the inlet length. Weir flow holds for \(d = 0.2\) feet while orifice flow occurs for \(d = 0.4\) feet. In between these depths flow capture is linearly interpolated between the flow capture at these two depths.</p>
+<h1><a class="anchor" id="autotoc_md54"></a>
+Drop Inlets</h1>
+<p>Drop Grate Inlets</p>
+<p>The flow capture equation for a drop grate inlet located on-grade in a channel is the same as for a street grate except that the ratio EO of flow over the grate to total cross-section flow Q is given by:</p>
+<p class="formulaDsp">
+\[ E_{O} = \frac{1.486 \sqrt{S_{L}} (y W)^{1.67}}{n Q (W + 2 y)^{0.67}} \]
+</p>
+<p>where</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(W\)   </td><td class="markdownTableBodyNone">= side length of grate parallel to flow direction (ft)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(y\)   </td><td class="markdownTableBodyNone">= flow depth in the channel (ft)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">\(n\)   </td><td class="markdownTableBodyNone">= Manning's roughness coefficient for the channel    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">\(S_{L}\)   </td><td class="markdownTableBodyNone">= channel longitudinal slope (ft/ft)   </td></tr>
+</table>
+<p>A cross slope \(S_{X}\) of 1% is assumed unless the grate extends across the entire bottom width of a trapezoidal channel. In that case \(S_{X}\) is taken as the slope of the channel</p>
+<h1><a class="anchor" id="autotoc_md55"></a>
+Custom Inlets</h1>
+<p>Custom inlets, which can be used with any type of conduit, are described with either  a Diversion curve of captured flow as a function of approach flow, or with a Rating curve of captured flow as a function of water depth. The curves are input to SWMM in the form of tables of selected points on each type of curve. During a simulation, linear interpolation is used to find values in between the tabulated points.</p>
+<p>The following conventions apply for using the curves:</p>
+<ul>
+<li>If a Rating curve is supplied for inlet, then the water depth at the conduit's downstream node is used to determine flow capture even if the inlet is located on-grade.</li>
+<li>If a Diversion curve is supplied for an on-sag inlet, then its flow capture is computed using the conduit's flow rate even if the inlet is located on-sag. </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

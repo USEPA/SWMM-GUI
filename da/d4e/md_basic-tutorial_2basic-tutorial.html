@@ -1,0 +1,671 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>EPA SWMM GUI: EPA SWMM 5 Basic Tutorial</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="../../toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">EPA SWMM GUI
+   &#160;<span id="projectnumber">5.3.0</span>
+   </div>
+   <div id="projectbrief">Tutorials and User Guide</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('da/d4e/md_basic-tutorial_2basic-tutorial.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">EPA SWMM 5 Basic Tutorial</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Introduction</h1>
+<p>This tutorial provides an introduction to using EPA SWMM, Version 5, for modeling the quantity and quality of stormwater runoff produced from urban areas. The topics to be covered include:</p>
+<ul>
+<li>Project Setup</li>
+<li>Constructing a SWMM Model</li>
+<li>Setting the Properties of SWMM Objects</li>
+<li>Saving and Opening Projects</li>
+<li>Running a Single Event Analysis</li>
+<li>Viewing Simulation Results</li>
+<li>Simulating Runoff Water Quality</li>
+<li>Running a Continuous Simulation</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Example Study Area</h1>
+<p>In this tutorial we will model the drainage system serving a 12 acre residential area. The system layout is shown below and consists ofsubcatchment areas S1 through S3 Note, storm sewer conduits C1 through C4, and conduit junctions J1 through J4. The system discharges to a creek at the point labeled Out1. We will first go through the steps of creating the objects shown in this diagram on SWMM's Study Area Map and setting the various properties of these objects. Then we will simulate the water quantity and quality response to a 3-inch, 6-hour rainfall event, as well as a continuous, multi-year record.</p>
+<div class="image">
+<img src="../../example_map.gif" alt=""/>
+<div class="caption">
+Study Area Map</div></div>
+    <p>You can click the View Map button that appears in each topic's header panel to refer to this drawing at any time. Use the [button_next] button to move to the next topic, the [button_prev] button to return to the previous topic, and the [button_main] button to return to the start of the tutorial. Side notes have been added to many of the topics that describe additional features of EPA SWMM. These can be viewed in a pop-up window by clicking on the word Note where it appears.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Study Area map</h2>
+<p><a href="../../example_map.gif" target="_blank">View Map</a> </p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Project Setup</h1>
+<p>Our first task is to create a new project in EPA SWMM and make sure that certain default options are selected. Using these defaults will simplify the data entry tasks later on.</p>
+<ol type="1">
+<li>Launch EPA SWMM if it is not already running and select <b>File | New</b> to create a new project.</li>
+<li>Select <b>Project | Defaults</b> to open the Project Defaults dialog.</li>
+<li>On the ID Labels page, set the ID Prefixes as follows (leave the others blank):</li>
+</ol>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft"></th><th class="markdownTableHeadLeft"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Rain Gages:   </td><td class="markdownTableBodyLeft">Gage    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Subcatchments:   </td><td class="markdownTableBodyLeft">S    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Junctions:   </td><td class="markdownTableBodyLeft">J    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Outfalls:   </td><td class="markdownTableBodyLeft">Out    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Conduits:   </td><td class="markdownTableBodyLeft">C    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">ID Increment:   </td><td class="markdownTableBodyLeft">1   </td></tr>
+</table>
+<p>This will make EPA SWMM automatically label new objects with consecutive numbers following the designated prefix.</p>
+<ol type="1">
+<li>On the Subcatchments page of the dialog set the following default values:</li>
+</ol>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft"></th><th class="markdownTableHeadLeft"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Area:   </td><td class="markdownTableBodyLeft">4    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Width:   </td><td class="markdownTableBodyLeft">400    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">% Slope:   </td><td class="markdownTableBodyLeft">0.5    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">% Imperv:   </td><td class="markdownTableBodyLeft">50    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">N-Imperv:   </td><td class="markdownTableBodyLeft">0.01    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">N-Perv:   </td><td class="markdownTableBodyLeft">0.10    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Dstore-Imperv:   </td><td class="markdownTableBodyLeft">0.05    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Dstore-Perv:   </td><td class="markdownTableBodyLeft">0.05    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Zero-Imperv:   </td><td class="markdownTableBodyLeft">25.0    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Infil. Model &lt;click to edit&gt;   </td><td class="markdownTableBodyLeft"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Method:   </td><td class="markdownTableBodyLeft">Modified Green-Ampt    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Suction Head:   </td><td class="markdownTableBodyLeft">3.5    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Conductivity:   </td><td class="markdownTableBodyLeft">0.5    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Initial Deficit:   </td><td class="markdownTableBodyLeft">0.26   </td></tr>
+</table>
+<ol type="1">
+<li>On the Nodes/Links page set the following default values:</li>
+</ol>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft"></th><th class="markdownTableHeadLeft"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Node Invert:   </td><td class="markdownTableBodyLeft">0    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Node Max. Depth:   </td><td class="markdownTableBodyLeft">4    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Conduit Length:   </td><td class="markdownTableBodyLeft">400    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Conduit Geometry: &lt;click to edit&gt;   </td><td class="markdownTableBodyLeft"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Shape:   </td><td class="markdownTableBodyLeft">Circular    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Max. Depth:   </td><td class="markdownTableBodyLeft">1.0    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Barrels:   </td><td class="markdownTableBodyLeft">1    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Conduit Roughness:   </td><td class="markdownTableBodyLeft">0.01    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Flow Units:   </td><td class="markdownTableBodyLeft">CFS    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Link Offsets:   </td><td class="markdownTableBodyLeft">DEPTH    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Routing Model:   </td><td class="markdownTableBodyLeft">Kinematic Wave   </td></tr>
+</table>
+<ol type="1">
+<li>Click <b>OK</b> to accept these choices and close the dialog. Note.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Setting Map Options</h1>
+<p>Next we will set some map display options so that ID labels and symbols will be displayed as we add objects to the study area map, and links will have direction arrows.</p>
+<ol type="1">
+<li>Select <b>Tools | Map DisplayOptions</b> to bring up the Map Options dialog.</li>
+<li>Select the Subcatchments page, set the Fill Style to <b>Diagonal</b> and the Symbol Size to <b>5</b>.</li>
+<li>Then select the Nodes page and set the Node Size to <b>5</b>.</li>
+<li>Select the Annotation page and check off the boxes that will display ID labels for Subcatchments, Nodes, and Links. Leave the others un-checked.</li>
+<li>Finally, select the Flow Arrows page, select the <b>Filled</b> arrow style, and set the arrow size to <b>7</b>.</li>
+<li>Click the <b>OK</b> button to accept these choices and close the dialog.</li>
+</ol>
+<p>Before placing objects on the map we should set its dimensions.</p>
+<ol type="1">
+<li>Select <b>View | Dimensions</b> to bring up the Map Dimensions dialog.</li>
+<li>You can leave the dimensions at their default values for this example.</li>
+</ol>
+<p>Finally, look in the status bar at the bottom of the main window and check that the Auto-Length feature is off. If it is on, then click the down arrow button and select "Auto-Length: Off" from the popup menu that appears. Also make sure that the Offsets option is set to Depth. If set to Elevation then click the down arrow button and select "Depth Offsets" from the popup menu that appears.</p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Drawing the Drainage Area Subcatchments</h1>
+<p>We are now ready to begin adding components to the Study Area Map. We will start with the subcatchments. Remember that you can click the <b>View Map</b> button of this tutorial at any time to see how we want our map to look eventually. Note[^1]</p>
+<ol type="1">
+<li>Begin by selecting the <b>Subcatchments</b> category (under Hydrology) in the Project Browser panel (on the left side of the main window).</li>
+<li>Then click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button on the toolbar underneath the object category listing in the Project panel (or select <b>Project | Add a New Subcatchment</b> from the main menu). Notice how the mouse cursor changes shape to a pencil when you move it over the map.</li>
+<li>Move the mouse to the map location where one of the corners of subcatchment <b>S1</b> lies and left-click the mouse.</li>
+<li>Do the same for the next three corners and then right-click the mouse (or hit the <b>Enter</b> key) to close up the rectangle that represents subcatchment <b>S1</b>. You can press the <b>Esc</b> key if instead you wanted to cancel your partially drawn subcatchment and start over again. Don't worry if the shape or position of the object isn't quite right. We will go back later and show how to fix this.</li>
+<li>Next move the mouse to subcatchment <b>S2</b>'s location and draw its outline. Then repeat  for subcatchment <b>S3</b>. Note[^2]</li>
+</ol>
+<p>Observe how sequential ID labels are generated automatically as we add objects to the map.</p>
+<p>[1] Drawing objects on the map is just one way of creating a project. For large projects is will be more convenient to first construct an EPA SWMM project file external to the program. The project file is a text file that describes each object in a specified format as described in the Users Manual. Data extracted from various sources, such as CAD drawings or GIS files, can be used to create the project file.</p>
+<p>[2] If you right-click (or press Enter) after adding the first point of a subcatchment's outline, the subcatchment will be shown as just a single point.</p>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Drawing the Drainage System Nodes</h1>
+<p>Next we will add in the junction nodes and the outfall node that comprise part of the drainage network.</p>
+<ol type="1">
+<li>To begin adding junctions, select the <b>Junctions</b> category from the Project Browser (under Hydraulics -&gt; Nodes) and click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button or select <b>Project | Add a New Junction</b> from the main menu.</li>
+<li>Move the mouse to the position of junction J1 and left-click it. Do the same for junctions <b>J2</b> through <b>J4</b>.</li>
+<li>To add the outfall node, select Outfalls from the Project Browser,  click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button or select <b>Project | Add a New Outfall</b> from the main menu, move the mouse to the outfall's location on the map, and left-click. Note how the outfall is automatically given the name <b>Out1</b>.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md8"></a>
+Drawing the Drainage System Links</h1>
+<p>Now we will add the storm sewer conduits that connect our drainage system nodes to one another. (You must have created a link's end nodes as described in the previous topic before you can create the link.) We will begin with conduit C1 which connects junction <b>J1</b> to <b>J2</b>.</p>
+<ol type="1">
+<li>Select the Conduits from the Project Browser (under Hydraulics -&gt; Links) and press the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button or select <b>Project | Add a New Conduit</b> from the main menu. The mouse cursor will change shape to a cross hair when moved onto the map.</li>
+<li>Left click the mouse on junction <b>J1</b>. Note how the mouse cursor now changes shape to a pencil.</li>
+<li>Move the mouse over to junction <b>J2</b> (note how an outline of the conduit is drawn as you move the mouse) and left-click to create the conduit. You could have canceled the operation by either right-clicking or by hitting the <b>Esc</b> key.</li>
+</ol>
+<p>Repeat steps 2 and 3 for conduits <b>C2</b> through <b>C4</b>. Note[^1]</p>
+<p>[1] Although all of our conduits were drawn as straight lines, it is possible to draw a curved link by left-clicking at intermediate points where the direction of the link changes before clicking on the end node.</p>
+<h1><a class="anchor" id="autotoc_md9"></a>
+Adding a Rain Gage</h1>
+<p>To complete the construction of our study area schematic we need to add a rain gage.</p>
+<ol type="1">
+<li>Select the Rain Gages category from the the Project Browser panel (under Hydrology)  and either click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button or select <b>Project | Add a New Rain Gage</b> from the main menu.</li>
+<li>Move the mouse over the Study Area Map to where the gage should be located and left-click the mouse.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md10"></a>
+Re-Positioning Objects</h1>
+<p>At this point we have completed drawing the example study area. Your system should look like the one seen by pressing the View Map button above. If the rain gage, subcatchments or  nodes are out of position you can move them around by</p>
+<ol type="1">
+<li>clicking the &#160;<img src="../../select.gif" alt="" class="inline"/>      button on the Map Toolbar to place the map in Object Selection mode,</li>
+<li>clicking on the object to be moved,</li>
+<li>dragging the object with the left mouse button held down to its new position.</li>
+</ol>
+<p>To re-shape a subcatchment's outline:</p>
+<ol type="1">
+<li>With the map in Object Selection mode, click on the subcatchment's centroid (indicated by a solid square within the subcatchment) to select it.</li>
+<li>Then click the &#160;<img src="../../verted.gif" alt="" class="inline"/>      button on the Map Toolbar to put the map into Vertex Selection mode.</li>
+<li>Select a vertex point on the subcatchment outline by clicking on it (note how the selected vertex is indicated by a filled solid square).</li>
+<li>Drag the vertex to its new position with the left mouse button held down.</li>
+<li>If need be, vertices can be added to or deleted from the outline by right-clicking the mouse and selecting the appropriate option from the popup menu that appears.</li>
+<li>When finished, click the &#160;<img src="../../select.gif" alt="" class="inline"/>     button to return to Object Selection mode.</li>
+</ol>
+<p>This same procedure can also be used to re-shape a link.</p>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Setting Properties</h1>
+<p>As visual objects are added to our project, SWMM assigns them a default set of properties. To change the value of a specific property for an object we must select the object into the Property Editor (shown below). There are several different ways to do this. If the Editor is already visible then you can simply click on the object or select it from the Project Browser. If the Editor is not visible then you can make it appear by one of the following actions:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft"></th><th class="markdownTableHeadLeft"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">- double-click the object <br  />
+ on the map   </td><td class="markdownTableBodyLeft" rowspan="3"><p class="starttd"><img src="../../propedit.png" alt="" class="inline"/>    </p>
+<p class="endtd"></p>
+</td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">- right-click on the object <br  />
+ and select Properties <br  />
+ from the pop-up menu <br  />
+ that appears    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">- select the object from <br  />
+ the Project Browser and <br  />
+ then click the Browser's <br  />
+<img src="../../edit.gif" alt="" class="inline"/>     button.   </td></tr>
+</table>
+<p>Whenever the Property Editor has the focus you can press the F1 key to obtain a more detailed description of the properties listed.</p>
+<h1><a class="anchor" id="autotoc_md12"></a>
+Setting Subcatchment Properties</h1>
+<p>Two key properties of our subcatchments that need to be set are the rain gage that supplies rainfall data to the subcatchment and the node of the drainage system that receives runoff from the subcatchment. Since all of our subcatchments utilize the same rain gage, <b>Gage1</b>, we can use a shortcut method to set this property for all subcatchments at once:</p>
+<ol type="1">
+<li>From the main menu select <b>Edit | Select All</b>.</li>
+<li>Then select <b>Edit | Group Edit</b> to make a Group Editor dialog appear.</li>
+<li>Select <b>Subcatchments</b> as the class of object to edit, <b>Raingage</b> as the property to edit, and type in <b>Gage1</b> as the new value.</li>
+<li>Click <b>OK</b> to change the rain gage of all subcatchments to <b>Gage1</b>. A confirmation dialog will appear noting that 3 subcatchments have changed. Select <b>No</b> when asked to continue editing.</li>
+</ol>
+<p>To set the outlet node of our subcatchments we have to proceed one by one, since these vary by subcatchment:</p>
+<ol type="1">
+<li>Double click on subcatchment <b>S1</b> or select it from the Project Browser and click the Browser's &#160;<img src="../../edit.gif" alt="" class="inline"/>     button to bring up the Property Editor.</li>
+<li>Type <b>J1</b> in the Outlet field and press <b>Enter</b>. Note how a dotted line is drawn between the subcatchment and the node.</li>
+<li>Click  on subcatchment <b>S2</b> and enter <b>J2</b> as its Outlet.</li>
+<li>Click on subcatchment <b>S3</b> and enter <b>J3</b> as its Outlet.</li>
+</ol>
+<p>Finally, we wish to represent area <b>S3</b> as being less developed than the others. Select <b>S3</b> into the Property Editor and set its % Imperviousness to <b>25</b>.</p>
+<h1><a class="anchor" id="autotoc_md13"></a>
+Setting Node/Link Properties</h1>
+<p>The junctions and outfall of our drainage system need to have invert elevations assigned to them. As we did with the subcatchments, select each junction individually into the Property Editor and set its <b>Invert Elevation</b> to the value shown in the table below. Note[^1]</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft"></th><th class="markdownTableHeadLeft"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Node   </td><td class="markdownTableBodyLeft">Invert    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">J1   </td><td class="markdownTableBodyLeft">96    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">J2   </td><td class="markdownTableBodyLeft">90    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">J3   </td><td class="markdownTableBodyLeft">93    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">J4   </td><td class="markdownTableBodyLeft">88    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Out1   </td><td class="markdownTableBodyLeft">85   </td></tr>
+</table>
+<p>Only one of the conduits in our example system has a non-default property value. This is conduit <b>C4</b>, the outlet pipe, whose diameter should be 1.5 ft. instead of 1 ft. To change its diameter, select conduit <b>C4</b> into the Property Editor and set the Max. Depth value to <b>1.5</b>.</p>
+<p>[1] An alternative wau to move from one object of a given type to the next in order (or to the previous one) in the Property Editor is to hit the Page Down (or Page Up) key.</p>
+<h1><a class="anchor" id="autotoc_md14"></a>
+Setting Rain Gage Properties</h1>
+<p>In order to provide a source of rainfall input to our project we need to set the rain gage properties. Select <b>Gage1</b> into the Property Editor and set the following properties:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft"></th><th class="markdownTableHeadLeft"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Rain Format:   </td><td class="markdownTableBodyLeft">       INTENSITY    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Rain Interval:   </td><td class="markdownTableBodyLeft">       1:00    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Data Source:   </td><td class="markdownTableBodyLeft">       TIMESERIES    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Series Name:   </td><td class="markdownTableBodyLeft">       TS1   </td></tr>
+</table>
+<p>As mentioned earlier, we want to simulate the response of our study area to a 3-inch, 6-hour design storm. A time series named <b>TS1</b> will contain the hourly rainfall intensities that make up this storm. Thus we need to create a time series object and populate it with data. To do this:</p>
+<ol type="1">
+<li>From the Project Browser select the Time Series category of objects.</li>
+<li>Click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button on the Browser which will bring up a Time Series Editor form. Note[^1]</li>
+<li>Enter <b>TS1</b> in the Time Series Name field.</li>
+<li>Enter the following values into the Time and Value columns of the data entry grid (leave the Date column blank): Note[^2]</li>
+</ol>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft"></th><th class="markdownTableHeadLeft"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">0     </td><td class="markdownTableBodyLeft">0    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">1     </td><td class="markdownTableBodyLeft">0.5    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">2     </td><td class="markdownTableBodyLeft">1.0    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">3     </td><td class="markdownTableBodyLeft">0.75    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">4     </td><td class="markdownTableBodyLeft">0.5    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">5     </td><td class="markdownTableBodyLeft">0.25    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">6     </td><td class="markdownTableBodyLeft">0   </td></tr>
+</table>
+<ol type="1">
+<li>You can click the <b>View</b> button on the dialog to see a graph of the time series values. Click the <b>OK</b> button to accept the new time series.</li>
+</ol>
+<p>[1] The time series editor can also be launched directly from the Rain Gage Property editor by selecting the editor's Series Name field and double clicking on it.</p>
+<p>[2] Leaving off the dates for a time series means that SWMM will interpret the time values as hours from the start of the simulation. Otherwise, the time series follows the date/time values specified by the user.</p>
+<h1><a class="anchor" id="autotoc_md15"></a>
+Saving and Opening Projects</h1>
+<p>Having completed the initial design of our example project it is a good idea to give it a title and save our work to a file at this point. To do this:</p>
+<ol type="1">
+<li>Select the <b>Title/Notes</b> category from the Project Browser and click the &#160;<img src="../../edit.gif" alt="" class="inline"/>     button.</li>
+<li>In the Project Title/Notes dialog that appears, enter "Tutorial Example" as the title of our project and click the <b>OK</b> button to close the dialog.</li>
+<li>From the <b>File</b> menu select the <b>Save As</b> option.</li>
+<li>In the Save As dialog that appears, select a folder and file name under which to save this project. We suggest naming the file <b>tutorial.inp</b>. (An extension of .inp will be added to the file name if one is not supplied.)</li>
+<li>Click <b>OK</b> to save the project to file.</li>
+</ol>
+<p>The project data is saved to the file in a readable text format. You can view what the file looks like by selecting <b>Project | Details</b> from the main menu. To open our project at some later time, we would select the <b>Open</b> command from the <b>File</b> menu.</p>
+<h1><a class="anchor" id="autotoc_md16"></a>
+Running a Kinematic Wave Analysis</h1>
+<p>Before analyzing the performance of our example drainage system we need to set some options that determine how the analysis will be carried out. To do this:</p>
+<ol type="1">
+<li>From the Project Browser, select the <b>Options</b> category and click the &#160;<img src="../../edit.gif" alt="" class="inline"/>     button.</li>
+<li>On the General page of the Simulation Options dialog that appears, select <b>Kinematic Wave</b> as the flow routing method. The flow units should already be set to <b>CFS</b> and the infiltration method to <b>Green-Ampt</b>. The Allow Ponding option should be unchecked.</li>
+<li>On the Dates page of the dialog, set the End Analysis time to <b>12:00</b>.</li>
+<li>On the Time Steps page, set the Routing Time Step to <b>60</b> sec.</li>
+<li>Click <b>OK</b> to close the Simulation Options dialog.</li>
+</ol>
+<p>We are now ready to run the simulation. To do so, select <b>Project | Run Simulation</b> on the main menu (or simply click the &#160;<img src="../../run.gif" alt="" class="inline"/>     button).</p>
+<h1><a class="anchor" id="autotoc_md17"></a>
+Viewing Analysis Results</h1>
+<p>If there was a problem in running the simulation, a Status Report will appear describing what errors occurred.</p>
+<p>Upon successfully completing a run, there are numerous ways in which to view the results of the simulation. We will illustrate just a few here:</p>
+<ul>
+<li>Viewing the Status Report</li>
+<li>Viewing the Summary Report</li>
+<li>Viewing results on the map</li>
+<li>Viewing a time series plot</li>
+<li>Viewing a profile plot</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md18"></a>
+Viewing the Status/Summary Reports</h1>
+<p>The Status Report contains useful information about the quality of a simulation run, including a mass balance on rainfall, infiltration, evaporation, runoff, and inflow/outflow for the conveyance system. To view the report, select <b>Report | Status</b> (or click the &#160;<img src="../../report.gif" alt="" class="inline"/>      button on the Main Toolbar and then select <b>Status Report</b> from the drop down menu).</p>
+<p>For the system we just analyzed the report indicates the quality of the simulation is quite good, with negligible mass balance continuity errors for both runoff and routing (-0.39% and 0.03%, respectively, if all data were entered correctly). Also, of the 3 inches of rain that fell on the study area, 1.75 infiltrated into the ground and essentially the remainder became runoff.</p>
+<p>The Summary Report contains tables listing summary results for each subcatchment, node and link in the drainage system. Total rainfall, total runoff, and peak runoff for each subcatchment, peak depth and and hours flooded for each node, and peak flow, velocity, and depth for each conduit are just some of the outcomes included in the summary report.</p>
+<p>To view the Summary Report select <b>Report | Summary</b> from the main menu (or click the &#160;<img src="../../report.gif" alt="" class="inline"/>      button on the  Main Toolbar and then select <b>Summary Report</b> from the drop down menu). The report's window has a drop down list from which you select a particular report to view. For our example, the Node Flooding Summary table indicates there was internal flooding in the system at node <b>J2</b>. Note[^1] The Conduit Surcharge Summary table shows that Conduit <b>C2</b>, just downstream of node <b>J2</b>, was at full capacity and therefore appears to be slightly undersized.</p>
+<p>[1] In EPA SWMM, flooding will occur whenever the water surface at a node exceeds the maximum defined depth. Normally, such water will be lost from the system. The option also exists to have this water pond atop the node and be re-introduced into the the drainage system when capacity exists to do so.</p>
+<h1><a class="anchor" id="autotoc_md19"></a>
+Viewing Results on the Map</h1>
+<p>Simulation results (as well as some design parameters, such as subcatchment area, node invert elevation, link maximum depth) can be viewed in color-coded fashion on the study area map. To view a particular variable in this fashion:</p>
+<ol type="1">
+<li>Select the Map page of the Browser panel.</li>
+<li>Select the variables to view for Subcatchments, Nodes, and Links from the dropdown combo boxes in the Themes panel.</li>
+<li>The color coding used for a particular variable is displayed with a legend on the study area map. To toggle the display of a legend, select <b>View | Legends</b>.</li>
+<li>To move a legend to another location, drag it with the left mouse button held down.</li>
+<li>To change the color coding and the breakpoint values for different colors, select <b>View | Legends | Modify</b> and then the pertinent class of object (or if the legend is already visible, simply right-click on it).</li>
+<li>To view numerical values for the variables being displayed on the map, select <b>Tools | Map Display Options</b> and then select the Annotation page of the Map Options dialog. Use the check boxes for Rain Gages, Subcatchments, Nodes, and Links to specify what kind of annotation to add.</li>
+<li>The Date / Time of Day / Elasped Time controls on the Map Browser can be used to move through the simulation results in time.</li>
+<li>You can use the controls in the Animator panel of the Map Browser to animate the map display through time. For example, pressing the &#160;<img src="../../clip0013.gif" alt="" class="inline"/>     button will run the animation forward in time.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md20"></a>
+Viewing a Time Series Plot</h1>
+<p>To generate a time series plot of a simulation result:</p>
+<ol type="1">
+<li>Select <b>Report | Graph | Time Series</b> from the menu bar or simply click &#160;<img src="../../graph.gif" alt="" class="inline"/>      on the Main Toolbar.</li>
+<li>A Time Series Plot Selection dialog will appear. It is used to select the objects and variables to be plotted.</li>
+</ol>
+<p>For our example, this dialog can be used to graph the flows in conduits <b>C1</b> and <b>C2</b> as follows:</p>
+<ol type="1">
+<li>Select conduit <b>C1</b> on the map or in the Project Browser and then click the <b>Add</b> button on the dialog.</li>
+<li>A Data Series Selection page will appear. Select <b>Flow</b> as the Variable to plot.</li>
+<li>Click the Accept button to return to the Plot Selection page of the dialog.</li>
+<li>Repeat the above steps for conduit <b>C2</b> and press <b>OK</b> to create the plot.</li>
+</ol>
+<p>After a plot is created you can:</p>
+<ul>
+<li>customize its appearance by selecting <b>Report | Customize</b> or right clicking on the plot,</li>
+<li>copy it to the clipboard and paste it into another application by selecting <b>Edit | Copy To</b> or clicking &#160;<img src="../../copy.gif" alt="" class="inline" title=" "/>      on the Main Toolbar</li>
+<li>print it by selecting <b>File | Print</b> or <b>File | Print Preview</b> (use <b>File | Page Setup</b> first to set margins, orientation, etc.).</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md21"></a>
+Viewing a Profile Plot</h1>
+<p>SWMM can generate profile plots showing how water surface depth varies across a path of connected nodes and links. Let's create such a plot for the conduits connecting junction <b>J1</b> to the outfall <b>Out1</b> of our example drainage system. To do this:</p>
+<ol type="1">
+<li>Select Report | Graph | Profile or simply click &#160;<img src="../../profile.gif" alt="" class="inline"/>      on the Main Toolbar.</li>
+<li>Either enter <b>J1</b> in the Start Node field of the Profile Plot dialog that appears or select it on the map or from the Project Browser and click the &#160;<img src="../../plusbtn.gif" alt="" class="inline"/>      button next to the field.</li>
+<li>Do the same for node <b>Out1</b> in the End Node field of the dialog.</li>
+<li>Click the <b>Find Path</b> button. An ordered list of the links which form a connected path between the specified Start and End nodes will be displayed in the Links in Profile box. You can edit the entries in this box if need be.</li>
+<li>Click the <b>OK</b> button to create the plot, showing the water surface profile as it exists at the simulation time currently selected in the Map Browser.</li>
+</ol>
+<p>As you move through time using the Map Browser or with the Animator control, the water depth profile on the plot will be updated. Observe how node <b>J2</b> becomes flooded between hours 2 and 3 of the storm event.</p>
+<p>The appearance of a profile plot can be customized or it can be copied or printed using the same procedures as for a time series plot.</p>
+<h1><a class="anchor" id="autotoc_md22"></a>
+Running a Dynamic Wave Analysis</h1>
+<p>In the analysis just run we chose to use the Kinematic Wave method of routing flows through our drainage system. This is an efficient but simplified approach that cannot deal with such phenomena as backwater effects, pressurized flow, flow reversal, and non-dendritic layouts. SWMM also includes a Dynamic Wave routing procedure that can represent these conditions. This procedure, however, requires more computation time, due to the need for smaller time steps to maintain numerical stability.</p>
+<p>Most of the effects mentioned above would not apply to our example. However we had one conduit, <b>C2</b>, that flowed full and caused its upstream junction to flood. It could be that this pipe is actually being pressurized and could therefore convey more flow than was computed using Kinematic Wave routing. We would now like to see what would happen if we apply Dynamic Wave routing instead.</p>
+<p>To run the analysis with Dynamic Wave routing:</p>
+<ol type="1">
+<li>From the Project Browser, select the Options category and click the &#160;<img src="../../edit.gif" alt="" class="inline"/>     button.</li>
+<li>On the General page of the Simulation Options dialog that appears, select <b>Dynamic Wave</b> as the flow routing method.</li>
+<li>Click <b>OK</b> to close the form and select <b>Project | Run Simulation</b> (or click the &#160;<img src="../../Run.gif" alt="" class="inline"/>     to re-run the analysis. Note[^1]</li>
+</ol>
+<p>If you look at the Status Report for this run you will see that there is no longer any flooding and that the peak flow carried by conduit <b>C2</b> has been increased from 3.52 cfs to 4.04 cfs.</p>
+<p>[1] Normally when running a Dynamic Wave analysis, one would also want to reduce the routing time step (on the Time Steps page of the dialog) and perhaps select the Variable Time Step option (on the Dynamic Wave page of the dialog) as well.</p>
+<h1><a class="anchor" id="autotoc_md23"></a>
+Simulating Runoff Water Quality</h1>
+<p>In the next phase of this tutorial we will add water quality analysis to our example project. SWMM has the ability to analyze the buildup, washoff, transport and treatment of any number of water quality constituents. The steps needed to accomplish this are:</p>
+<ol type="1">
+<li>Identify the pollutants to be analyzed.</li>
+<li>Define the categories of land uses that generate these pollutants.</li>
+<li>Set the parameters of buildup and washoff functions that determine the quality of runoff  from each land use.</li>
+<li>Assign a mixture of land uses to each subcatchment area</li>
+<li>Define pollutant removal functions for nodes within the drainage system that contain treatment facilities.</li>
+</ol>
+<p>We will now apply each of  these steps, with the exception of number 5, to our example project. Note[^1]</p>
+<p>[1] Aside from direct runoff, EPA SWMM allows pollutants to be introduced into the nodes of a drainage system through: user defined time series of direct inflows, dry weather inflows, groundwater interflow, or rainfall derived inflow/infiltration.</p>
+<h1><a class="anchor" id="autotoc_md24"></a>
+Adding Pollutants</h1>
+<p>For this tutorial example we will define two runoff pollutants; total suspended solids (TSS), measured as mg/L, and total Lead, measured in ug/L. In addition, we will specify that the concentration of Lead in runoff is a fixed fraction (0.25) of the TSS concentration. To add these pollutants to our project:</p>
+<ol type="1">
+<li>Under the Quality category in the Project Browser, select the <b>Pollutants</b> sub-category beneath it.</li>
+<li>Click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button to add a new pollutant to the project.</li>
+<li>In the Pollutant Editor form that appears, enter <b>TSS</b> for the pollutant name and leave the other data fields at their default settings.</li>
+<li>Click the <b>OK</b> button to close the Editor.</li>
+<li>Click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button on the Project Browser again to add our next pollutant.</li>
+<li>In the Pollutant Editor, enter <b>Lead</b> for the pollutant name, select <b>ug/L</b> for the concentration units, enter <b>TSS</b> as the name of the Co-Pollutant, and enter <b>0.25</b> as the Co-Fraction value.</li>
+<li>Click the <b>OK</b> button to close the Editor.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md25"></a>
+Adding Land Uses</h1>
+<p>In SWMM, pollutants associated with runoff are generated by specific land uses assigned to subcatchments. In our example, we will define two categories of land uses: Residential and Undeveloped. To add these land uses to the project:</p>
+<ol type="1">
+<li>Under the Quality category in the Project Browser, select the Land Uses sub-category and click the &#160;<img src="../../plus.gif" alt="" class="inline"/>     button.</li>
+<li>In the Land Use Editor form that appears, enter <b>Residential</b> in the Name field and then click the <b>OK</b> button.</li>
+<li>Repeat steps 1 and 2 for the <b>Undeveloped</b> land use category.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md26"></a>
+Defining Buildup and Washoff Functions</h1>
+<p>Next we need to define buildup and washoff functions for TSS in each of our land use categories. Functions for Lead are not needed since its runoff concentration was defined to be a fixed fraction of the TSS concentration. Normally, defining these functions requires site specific calibration.</p>
+<p>In this example we will assume that suspended solids in Residential areas builds up at a constant rate of 1 pound per acre per day until a limit of 50 lbs per acre is reached. For the Undeveloped area we will assume that buildup is only half as much. For the washoff function, we will assume a constant event mean concentration of 100 mg/L for Residential land and 50 mg/L for undeveloped land. To define these functions for the Residential land use:</p>
+<ol type="1">
+<li>Select the <b>Residential</b> land use category from the Project Browser and click the &#160;<img src="../../edit.gif" alt="" class="inline"/>     button.</li>
+<li>In the Land Use Editor dialog, move to the Buildup page.</li>
+<li>Select <b>TSS</b> as the pollutant and <b>POW</b> (for Power function) as the function type.</li>
+<li>Assign the function a maximum buildup of <b>50</b>, a rate constant of <b>1.0</b>, a power of <b>1</b> and select <b>AREA</b> as the normalizer.</li>
+<li>Move to the Washoff page of the dialog and select <b>TSS</b> as the pollutant, <b>EMC</b> as the function type, and enter <b>100</b> for the coefficient. Fill the other fields with <b>0</b>.</li>
+<li>Click the <b>OK</b> button to accept your entries.</li>
+</ol>
+<p>Now do the same for the <b>Undeveloped</b> land use category, except use a maximum buildup of <b>25</b>, a buildup rate constant of <b>0.5</b>, a buildup power of <b>1</b>, and a washoff EMC of <b>50</b>.</p>
+<h1><a class="anchor" id="autotoc_md27"></a>
+Assigning Land Uses to Subcatchments</h1>
+<p>The final step in our water quality example is to assign a mixture of land uses to each subcatchment area:</p>
+<ol type="1">
+<li>Select subcatchment <b>S1</b> into the Property Editor.</li>
+<li>Select the Land Uses property and click the ellipsis button (or press <b>Enter</b>).</li>
+<li>In the Land Use Assignment form that appears, enter <b>75</b> for the % Residential and <b>25</b> for the % Undeveloped. Then click the <b>OK</b> button to close the dialog.</li>
+<li>Repeat the same three steps for subcatchment <b>S2</b>.</li>
+<li>Repeat the same for subcatchment <b>S3</b>, except assign the land uses as <b>25</b>% Residential and <b>75</b>% Undeveloped.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md28"></a>
+Running a Water Quality Analysis</h1>
+<p>Before we simulate the runoff quantities of TSS and Lead from our study area, an initial buildup of TSS should be defined so it can be washed off during our single rainfall event. We can either specify the number of antecedent dry days prior to the simulation or directly specify the initial buildup mass on each subcatchment. We will use the former method:</p>
+<ol type="1">
+<li>From the Options category of the Project Browser, select the Dates sub-category and click the &#160;<img src="../../edit.gif" alt="" class="inline"/>     button.</li>
+<li>In the Simulation Options dialog that appears, enter <b>5</b> into the Antecedent Dry Days field.</li>
+<li>Leave the other simulation options the same as they were for the dynamic wave flow routing we just completed.</li>
+<li>Click the <b>OK</b> button to close the dialog.</li>
+</ol>
+<p>Now run the simulation by selecting <b>Project | Run Simulation</b> or by clicking &#160;<img src="../../run.gif" alt="" class="inline"/>     on the Main Toolbar.</p>
+<p>When the run is completed, view its Status Report. Note that two new sections have been added for Runoff Quality Continuity and Quality Routing Continuity. From the Runoff Quality Continuity table we see that there was an initial buildup of 47.5 lbs of TSS on the study area and an additional 2.2 lbs of buildup added during the dry periods of the simulation. About 48 lbs were washed off during the rainfall event. The quantity of Lead washed off is a fixed fraction (0.25 times 0.001 to convert from mg to ug) of the TSS as was specified.</p>
+<p>If you plot the runoff concentration of TSS for subcatchment <b>S1</b> and <b>S3</b> together on the same time series graph you will see the difference in concentrations resulting from the different mix of land uses in these two areas. You can also see that the duration over which pollutants are washed off is much shorter than the duration of the entire runoff hydrograph (i.e., 1 hour versus about 6 hours). This results from having exhausted the available buildup of TSS over this period of time.</p>
+<h1><a class="anchor" id="autotoc_md29"></a>
+Running a Continuous Simulation</h1>
+<p>As a final exercise in this tutorial we will demonstrate how to run a long term continuous simulation using a historical rainfall record and how to perform a statistical frequency analysis on the results. The rainfall record will come from a file named sta310301.dat which was included with the example data sets provided with EPA SWMM. Note[^1] It contains several years of hourly rainfall beginning in January 1998. The data are stored in the National Climatic Data Center's DSI 3240 format which SWMM can automatically recognize.</p>
+<p>To run a continuous simulation with this rainfall record:</p>
+<ol type="1">
+<li>Select the rain gage <b>Gage1</b> into the Property Editor.</li>
+<li>Change the selection of Data Source to <b>FILE</b>.</li>
+<li>Select the File Name data field and click the ellipsis button (or press the <b>Enter</b> key) to bring up a Windows File Selection dialog.</li>
+<li>Navigate to the folder where the SWMM example files were stored, select the file named <b>sta310301.dat</b>, and click <b>Open</b> to select the file and close the dialog.</li>
+<li>In the Station No. field of the Property Editor enter <b>310301</b>.</li>
+<li>Select the Options category in the Project Browser and click the &#160;<img src="../../edit.gif" alt="" class="inline"/>     button to bring up the Simulation Options form.</li>
+<li>On the General page of the form, select <b>Kinematic Wave</b> as the Routing Method (this will help speed up the computations).</li>
+<li>On the Dates page of the form, set both the Start Analysis and Start Reporting dates to <b>01/01/1998</b>, and set the End Analysis date to <b>01/01/2000</b>.</li>
+<li>On the Time Steps page of the form, set the Routing Time Step to <b>300</b> seconds.</li>
+<li>Close the Simulation Options form by clicking the <b>OK</b> button and start the simulation by selecting <b>Project | Run Simulation</b> (or by clicking &#160;<img src="../../run.gif" alt="" class="inline"/>     on the Main Toolbar).</li>
+</ol>
+<p>[1] The example data sets can be found in My Documents | EPA SWMM Projects | Sample Projects</p>
+<h1><a class="anchor" id="autotoc_md30"></a>
+Performing a Frequency Analysis</h1>
+<p>After our continuous simulation is completed we can perform a statistical frequency analysis on any of the variables produced as output. For example, to determine the distribution of  rainfall volumes within each storm event over the two-year period simulated:</p>
+<ol type="1">
+<li>Select <b>Report | Statistics</b> or click the &#160;<img src="../../sum.gif" alt="" class="inline"/>      button on the Main Toolbar.</li>
+<li>In the Statistics Selection form that appears, enter the values as shown below:</li>
+</ol>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft"></th><th class="markdownTableHeadLeft"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Object Category:   </td><td class="markdownTableBodyLeft">System    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Variable Analyzed:   </td><td class="markdownTableBodyLeft">Precipitation    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Event Time Period:   </td><td class="markdownTableBodyLeft">Event-Dependent    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Statistic:   </td><td class="markdownTableBodyLeft">Total    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Event Thresholds:   </td><td class="markdownTableBodyLeft"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">   Rainfall   </td><td class="markdownTableBodyLeft">0    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">   Event Volume   </td><td class="markdownTableBodyLeft">0    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">   Inter-Event Hours   </td><td class="markdownTableBodyLeft">6   </td></tr>
+</table>
+<p>This will identify the rainfall volume from each event which is separated by 6 or more hours without rainfall.</p>
+<ol type="1">
+<li>Click the <b>OK</b> button to close the form.</li>
+</ol>
+<p>The results of this request will be a Statistics Report form containing four tabbed pages: a Summary page, a page containing a rank-ordered listing of each event, a page containing a histogram of the occurrence frequency versus event magnitude, and a Frequency Plot page that plots event magnitude versus cumulative frequency.</p>
+<p>The Summary page shows that there was a total of 213 rainfall events. The Events page shows that the largest rainfall event had a volume of 3.35 inches and occurred over a 24- hour period. There were no events that matched the 3-inch, 6-hour design storm event used in our previous single-event analysis which had produced some internal flooding. In fact, the status report for this continuous simulation indicates that there were no flooding or surcharge occurrences over the simulation period.</p>
+<h1><a class="anchor" id="autotoc_md31"></a>
+Other Features to Explore</h1>
+<p>We have only touched the surface of SWMM's capabilities. Some additional features of the program that you will find useful include:</p>
+<ul>
+<li>utilizing additional types of drainage elements, such as storage units, flow dividers, pumps, and regulators, to model more complex types of systems</li>
+<li>using control rules to simulate real-time operation of pumps and regulators</li>
+<li>employing different types of externally-imposed inflows at drainage system nodes, such as direct time series inflows, dry weather inflows, and rainfall-derived inflow/infiltration</li>
+<li>modeling groundwater interflow between aquifers beneath subcatchment areas and drainage system nodes</li>
+<li>modeling snow fall accumulation and melting within subcatchments</li>
+<li>adding calibration data to a project so that simulated results can be compared with measured values</li>
+<li>utilizing a background street, site plan, or topo map to assist in laying out a system's drainage elements and to help relate simulated results to real-world locations.</li>
+</ul>
+<p>You can find more information on these and other features in the SWMM User's Manual.</p>
+<p><em>HAPPY SWMMING!</em> </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>
