@@ -21,6 +21,7 @@
 //              esComboList (edited in a csDropDownList ComboBox)
 //              esComboEdit (edited in a csDropDown ComboBox)
 //              esButton    (edited via an OnClick event handler)
+//              esEditButton (text edit with a '+' map-selection button)
 //    Mask   -- an edit mask that applies when Style is esEdit:
 //              emNone      (any character is accepted)
 //              emNumber    (text must be a number)
@@ -52,7 +53,7 @@ uses
 type
   // Types of edit field styles
   TEditStyle = (esHeading, esReadOnly, esEdit, esComboList, esComboEdit,
-                esButton);
+                esButton, esEditButton);
 
   // Types of restrictions on an esEdit entry
   TEditMask = (emNone, emNumber, emPosNumber, emNoSpace);
@@ -747,7 +748,7 @@ begin
   end;
 
   // Set button status if row's edit style is esButton
-  if (FProps^[FRow].Style = esButton) then
+  if (FProps^[FRow].Style in [esButton, esEditButton]) then
     ButtonVisible := True
   else
     ButtonVisible := False;
@@ -782,7 +783,14 @@ begin
   // whose edit style is esButton
   if (Key = VK_RETURN)
   and (FProps^[aRow].Style = esButton)
-  then GoButtonClick(aRow)
+   then GoButtonClick(aRow)
+
+  // F4 activates the picker; Enter and typing still edit the text normally.
+  else if (Key = VK_F4) and (FProps^[aRow].Style = esEditButton) then
+  begin
+    GoButtonClick(aRow);
+    Key := 0;
+  end
 
   // Let the grid process the Up & Down Arrow key press
   else if Key in [VK_UP, VK_DOWN] then exit
@@ -809,11 +817,13 @@ begin
   with Sender as TStringGrid do
   begin
     MouseToCell(X,Y,aCol,aRow);
+    if (aRow < 0) or (aRow >= RowCount) then Exit;
+    if Button <> mbLeft then Exit;
 
     // If   current row's edit style is esButton, and  button is visible,
     // and  mouse is over the button, then re-draw button in pressed state.
     if  (aCol = 1) and (aRow = Row)
-    and (FProps^[aRow].Style = esButton)
+    and (FProps^[aRow].Style in [esButton, esEditButton])
     and (ButtonVisible) then
     begin
       aRect := CellRect(aCol,aRow);
@@ -836,23 +846,39 @@ procedure TPropEdit.GridMouseUp(Sender: TObject; Button: TMouseButton;
 //-----------------------------------------------------------------------------
 var
   aCol,aRow: LongInt;
-  aRect: TRect;
+  aRect, R: TRect;
+  W: Integer;
 begin
   with Sender as TStringGrid do
   begin
     MouseToCell(X,Y,aCol,aRow);
+    if (aRow < 0) or (aRow >= RowCount) then
+    begin
+      ButtonPressed := False;
+      Invalidate;
+      Exit;
+    end;
+    if Button <> mbLeft then Exit;
     if (aCol = 0) then aCol := 1;
 
     // If button is pressed and current row's edit style is esButton
     // then redraw button in unpressed state and fire the OnButtonClick event.
     if (ButtonPressed) then
     begin
-      if (FProps^[aRow].Style = esButton) then
+      if (aCol = 1) and (aRow = Row) and
+        (FProps^[aRow].Style in [esButton, esEditButton]) then
       begin
         aRect := CellRect(1,aRow);
-        ButtonPressed := not ButtonPressed;
+        ButtonPressed := False;
         DrawButton(Canvas, aRect);
-        GoButtonClick(aRow);
+        W := aRect.Bottom - aRect.Top;
+        R := Rect(aRect.Right-W, aRect.Top, aRect.Right, aRect.Bottom);
+        if PtInRect(R, Point(X,Y)) then
+        begin
+          GoButtonClick(aRow);
+          // Do not reopen the text editor and steal focus from the map.
+          Exit;
+        end;
       end
       else
       begin
@@ -922,7 +948,7 @@ begin
       SetBkMode(Handle,TRANSPARENT);
       TextOut(Rect.Left+2,Rect.Top+2,Cells[vCol,vRow]);
       if (gdSelected in State) and
-         (FProps^[vRow].Style = esButton) then
+         (FProps^[vRow].Style in [esButton, esEditButton]) then
         DrawButton(Canvas,Rect);
     end;
   end;
@@ -949,6 +975,13 @@ begin
   Flags := 0;
   if ButtonPressed then Flags := BF_FLAT;
   DrawEdge(aCanvas.Handle, R, EDGE_RAISED, BF_RECT or BF_MIDDLE or Flags);
+  if FProps^[FGrid.Row].Style = esEditButton then
+  begin
+    aCanvas.Font.Color := clBlack;
+    DrawText(aCanvas.Handle, '+', 1, R, DT_CENTER or DT_VCENTER or DT_SINGLELINE);
+    ButtonVisible := True;
+    Exit;
+  end;
   Flags := ((R.Right - R.Left) shr 1);
   PatBlt(aCanvas.Handle, R.Left+Flags, R.Top + H, 2, 2, BLACKNESS);
   PatBlt(aCanvas.Handle, R.Left+Flags-5, R.Top + H, 2, 2, BLACKNESS);
@@ -995,7 +1028,7 @@ begin
   if FProps^[CurRow].Style = esButton then Exit;
 
   // Activate the single line text edit control
-  if (FProps^[CurRow].Style = esEdit) then
+  if (FProps^[CurRow].Style in [esEdit, esEditButton]) then
   begin
 
     // Determine max. length and edit mask
@@ -1049,6 +1082,8 @@ begin
     Left   := FGrid.Left + aRect.Left;
     Top    := FGrid.Top + aRect.Top;
     Width  := FGrid.ColWidths[1];
+    if FProps^[FGrid.Row].Style = esEditButton then
+      Width := Width - FGrid.DefaultRowHeight;
     Height := FGrid.DefaultRowHeight;
     if Parent.Visible then
     begin

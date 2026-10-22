@@ -709,7 +709,7 @@ var
      (Name:'Tag';               Style:esEdit;      Mask:emNoSpace;   Length:0),
      (Name:'Rain Gage';         Style:esComboEdit; Mask:emNoSpace;   Length:0;
       List:''),
-     (Name:'Outlet';            Style:esEdit;      Mask:emNoSpace;   Length:0),
+     (Name:'Outlet';            Style:esEditButton; Mask:emNoSpace;  Length:0),
      (Name:'Area';              Style:esEdit;      Mask:emPosNumber; Length:0),
      (Name:'Width';             Style:esEdit;      Mask:emPosNumber; Length:0),
      (Name:'% Slope';           Style:esEdit;      Mask:emPosNumber; Length:0),
@@ -950,7 +950,7 @@ var
      'Optional comment or description',
      'Optional category or classification',
      'Rain gage assigned to subcatchment',
-     'Name of node or another subcatchment that receives runoff',
+     'Name of receiving node or subcatchment. Click + to pick a node on the map; Esc cancels.',
      'Area of subcatchment',
      'Width of overland flow path',
      'Average surface slope',

@@ -213,6 +213,8 @@ type
 
   private
     { Private declarations }
+    OutletSubcatch: TSubcatch;    //Non-owning selection target; nil when idle
+    OutletPreviousCursor: TCursor;
     FlyOverObject: Integer;       //Type of object under the mouse pointer
     FlyOverIndex: Integer;        //Item index of object under mouse pointer
     MapOptionsPage: Integer;      //Current page of map options dialog form
@@ -239,6 +241,7 @@ type
     ZoomRect : TRect;             //Rectangle that defines zoom-in extent
     OldTickCount: DWORD;          //Used to measure a small time delay
 
+    procedure PickOutletNode(const X, Y: Integer);
     procedure AddVertex;
     procedure BeginFencing(X: Integer; Y: Integer);
     function  BeginLinking(const X: Integer; const Y: Integer): Boolean;
@@ -306,6 +309,8 @@ type
     RedrawOnResize: Boolean;           //True if map redrawn when form resized
     AllSelected   : Boolean;           //True if entire study area selected
 
+    procedure BeginOutletSelection(const SubcatchIndex: Integer);
+    procedure CancelOutletSelection;
     procedure BeginAligning(Sender: TObject);
     procedure BeginResizing(Sender: TObject);
 
@@ -364,7 +369,7 @@ implementation
 
 uses
   Fmain, Fovmap, Dcopy, Dmapdim, Dlabel, Dmap,
-  Ubrowser, Uedit, Uoutput, Uupdate, Uclipbrd, Uinlet, Dfind;
+  Ubrowser, Uedit, Uoutput, Uupdate, Uclipbrd, Uinlet, Dfind, Fproped;
 
 const
   MAXZOOMRATIO = 1000000;    //Max. zoom-in ratio
@@ -375,6 +380,8 @@ const
   TXT_RESTORE_JUNCS    = 'Restoring display of junctions on the map.';
   TXT_RESTORE_LABELS   = 'Restoring display of labels on the map.';
   TXT_NODE             = 'Node ';
+  TXT_PICK_OUTLET      = 'Click an outlet node. Esc or right-click cancels.';
+  TXT_PICK_NODE_ONLY   = 'No node here. Click a node, or press Esc to cancel.';
 
 var
   FlyOverX  : Integer;
@@ -513,6 +520,7 @@ procedure TMapForm.FormClose(Sender: TObject; var Action: TCloseAction);
 // Minimizes window when the close icon is clicked.
 //-----------------------------------------------------------------------------
 begin
+  CancelOutletSelection;
   if (WindowState = wsMinimized)
   then Action := caNone
   else Action := caMinimize;
@@ -700,6 +708,7 @@ procedure TMapForm.ClearMap;
 // Clears the study area map display.
 //-----------------------------------------------------------------------------
 begin
+  CancelOutletSelection;
   Fencing := False;
   Vertexing := False;
   Linking := False;
@@ -1029,6 +1038,7 @@ procedure TMapForm.ToolButtonClick(ButtonTag: Integer);
 // MapButtonClick procedure for a listing of which Tags go with which buttons.
 //-----------------------------------------------------------------------------
 begin
+  CancelOutletSelection;
   // Determine which tool button was pressed
   CurrentTool := ButtonTag;
 
@@ -1125,6 +1135,93 @@ begin
 end;
 
 
+procedure TMapForm.BeginOutletSelection(const SubcatchIndex: Integer);
+//-----------------------------------------------------------------------------
+// Start an asynchronous map pick without changing the browser's selection.
+//-----------------------------------------------------------------------------
+begin
+  CancelOutletSelection;
+  if (SubcatchIndex < 0) or
+    (SubcatchIndex >= Project.Lists[SUBCATCH].Count) then Exit;
+  if not Map.Options.ShowNodes then
+  begin
+    Uutils.MsgDlg('Show nodes in Map Options before picking an outlet.',
+      mtInformation, [mbOK]);
+    Exit;
+  end;
+  MainForm.SelectorButtonClick;
+  OutletSubcatch := Project.GetSubcatch(SUBCATCH, SubcatchIndex);
+  OutletPreviousCursor := Cursor;
+  Cursor := crCross;
+  MainForm.ShowStatusHint(TXT_PICK_OUTLET);
+  Show;
+  SetFocus;
+end;
+
+
+procedure TMapForm.CancelOutletSelection;
+//-----------------------------------------------------------------------------
+// Cancelling must not change either the old outlet or the project's dirty flag.
+//-----------------------------------------------------------------------------
+begin
+  if OutletSubcatch = nil then Exit;
+  OutletSubcatch := nil;
+  Cursor := OutletPreviousCursor;
+  MainForm.ShowStatusHint('');
+end;
+
+
+procedure TMapForm.PickOutletNode(const X, Y: Integer);
+//-----------------------------------------------------------------------------
+// Reuse SWMM's native node hit test and outlet validation/update routine.
+//-----------------------------------------------------------------------------
+var
+  C: TSubcatch;
+  Index, OldObject, OldIndex: Integer;
+  S, Errmsg: String;
+begin
+  C := OutletSubcatch;
+  if C = nil then Exit;
+  // Resolve the non-owning pointer before dereferencing it. Closing/replacing
+  // a project or deleting the target must never assign another subcatchment.
+  Index := Project.Lists[SUBCATCH].IndexOfObject(C);
+  if (Index < 0) or (EditorObject <> SUBCATCH) or (EditorIndex <> Index) then
+  begin
+    CancelOutletSelection;
+    Exit;
+  end;
+  if not PtInRect(Map.Window.MapRect, Point(X, Y)) then Exit;
+  OldObject := SelectedObject;
+  OldIndex := SelectedIndex;
+  try
+    if not FindNode(X, Y) then
+    begin
+      MainForm.ShowStatusHint(TXT_PICK_NODE_ONLY);
+      Exit;
+    end;
+    S := Project.Lists[SelectedObject][SelectedIndex];
+  finally
+    SelectedObject := OldObject;
+    SelectedIndex := OldIndex;
+  end;
+  if S = C.Data[SUBCATCH_OUTLET_INDEX] then
+  begin
+    CancelOutletSelection;
+    Exit;
+  end;
+  Errmsg := '';
+  if not Uupdate.UpdateSubcatchOutlet(C, S, Errmsg) then
+  begin
+    Uutils.MsgDlg(Errmsg, mtError, [mbOK]);
+    Exit;
+  end;
+  C.Data[SUBCATCH_OUTLET_INDEX] := S;
+  HasChanged := True;
+  CancelOutletSelection;
+  PropEditForm.Editor.SetProp(SUBCATCH_OUTLET_INDEX, S);
+end;
+
+
 procedure TMapForm.FormMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 //-----------------------------------------------------------------------------
@@ -1133,6 +1230,16 @@ procedure TMapForm.FormMouseDown(Sender: TObject; Button: TMouseButton;
 var
   P: TPoint;
 begin
+  if OutletSubcatch <> nil then
+  begin
+    if Button = mbRight then
+    begin
+      CancelOutletSelection;
+      Exit;
+    end;
+    // Never move an object or select a different subcatchment while picking.
+    if Button = mbLeft then Exit;
+  end;
   // The left button is used for object selection, panning & zooming
   if Button = mbLeft then
   begin
@@ -1263,6 +1370,11 @@ procedure TMapForm.FormMouseUp(Sender: TObject; Button: TMouseButton;
 // Completes the operation begun by the MouseDown action.
 //-----------------------------------------------------------------------------
 begin
+  if (OutletSubcatch <> nil) and (Button = mbLeft) then
+  begin
+    PickOutletNode(X, Y);
+    Exit;
+  end;
   if Button = mbLeft then
   begin
     case CurrentTool of
@@ -1280,7 +1392,8 @@ begin
   else if (Button = mbMiddle) and Panning then
   begin
     EndPanning;
-    Cursor := crDefault;
+    if OutletSubcatch <> nil then Cursor := crCross
+    else Cursor := crDefault;
   end;
 end;
 
@@ -1320,6 +1433,13 @@ procedure TMapForm.FormKeyDown(Sender: TObject; var Key: Word;
 // object, or to pass a keystroke on to the Property Editor.
 //-----------------------------------------------------------------------------
 begin
+  if OutletSubcatch <> nil then
+  begin
+    if Key = VK_ESCAPE then CancelOutletSelection;
+    // Do not let Delete or Insert modify the model during selection.
+    Key := 0;
+    Exit;
+  end;
   if CurrentTool = VERTEXSELECT then
   begin
     if (Key = VK_DELETE) then DeleteVertex;

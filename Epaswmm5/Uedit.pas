@@ -1978,6 +1978,8 @@ procedure UpdateEditor(const ObjType: Integer; const Index: Integer);
 //  Updates the contents of the Property Editor form for a specific object.
 //-----------------------------------------------------------------------------
 begin
+  // A pending outlet pick belongs to the object whose editor started it.
+  MapForm.CancelOutletSelection;
   EditorObject := ObjType;
   EditorIndex := Index;
   with PropEditForm do

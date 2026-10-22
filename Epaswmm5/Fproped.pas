@@ -60,7 +60,7 @@ implementation
 
 {$R *.DFM}
 
-uses Fmain, Ubrowser, Uedit, Uvalidate, Ulid;
+uses Fmain, Fmap, Ubrowser, Uedit, Uvalidate, Ulid;
 
 const
   TXT_PROPERTY = 'Property';
@@ -103,6 +103,7 @@ procedure TPropEditForm.FormClose(Sender: TObject; var Action: TCloseAction);
 // OnClose event handler for form.
 //-----------------------------------------------------------------------------
 begin
+  MapForm.CancelOutletSelection;
   Action := caHide;
 end;
 
@@ -158,6 +159,15 @@ begin
   // User wants to select a rain file name
   else if (CurrentList = RAINGAGE) and (Index = GAGE_FILE_NAME)
   then Uedit.EditRainFileName(Project.CurrentItem[CurrentList], S, Modified)
+
+  // User wants to select a subcatchment's outlet on the map
+  else if (CurrentList = SUBCATCH) and (Index = SUBCATCH_OUTLET_INDEX) then
+  begin
+    // Selection is asynchronous; the current value is untouched until a node
+    // is clicked. Keep Modified false so Esc does not alter the property.
+    if Editor.IsValid then
+      MapForm.BeginOutletSelection(Project.CurrentItem[SUBCATCH]);
+  end
 
   // User wants to edit a subcatchment's infiltration data
   else if (CurrentList = SUBCATCH) and (Index = SUBCATCH_INFIL_INDEX)
